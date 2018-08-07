@@ -1,0 +1,39 @@
+{
+    "minLength": 8,
+    "maxLength": 30,
+    "missedCleavages": 2,
+    "fragmentCharge": [1],
+    "modifications": [
+        {
+            "name": "Carbamidomethylation",
+            "residues": ["C"],
+            "type": "fixed",
+            "mass": 57.02
+        },
+        {
+            "name": "oxidation",
+            "residues": ["M"],
+            "type": "variable"
+        },
+        {
+            "name": "n-terminal acetyl",
+            "residues": ["[K"],
+            "type": "variable",
+            "mass": 42.01
+        },
+        {
+            "name": "pyro-Q",
+            "residues": ["Q"],
+            "type": "variable",
+            "mass": -17.03
+        },
+        {
+            "name": "pyro-C",
+            "residues": ["C"],
+            "type": "variable",
+            "mass": -17.03
+        }
+    ],
+    "precursorTol": 20,
+    "fragmentTol": 0.5
+}
