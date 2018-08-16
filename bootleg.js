@@ -60,6 +60,10 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
     spectra[i].matches = [];
     if(mass < minMass) { minMass = mass; }
     if(mass > maxMass) { maxMass = mass; }
+    let intensitySum = spectra[i].intensity.reduce(getSum);
+    for(var j=0; j<spectra[i].intensity.length; j++) {
+      spectra[i].intensity[j] = spectra[i].intensity[j] / intensitySum;
+    }
   }
 
   config.minMass = minMass;
@@ -99,41 +103,48 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
         let startMass = p.mass - errorRange;
         let endMass = p.mass + errorRange;
         let startIdx = closestIdx(startMass, spectraMassArray);
+        let endIdx = closestIdx(endMass, spectraMassArray);
+        if(startIdx>0) { startIdx--; }
+        if(endIdx<spectraMassArray.length-1) { endIdx++; }
+
         //console.log("==========");
         //console.log("startIdx: "+startIdx+" mass "+spectraMassArray[startIdx]+" pepmass "+p.mass);
-        let s = sortedSpectra[startIdx];
-        let lowerNeutral = (s.pepmass-errorRange) * s.charge - s.charge;
-        let upperNeutral = (s.pepmass+errorRange) * s.charge - s.charge;
-        if(p.mass<lowerNeutral || p.mass>upperNeutral) { continue; }
-        let bFrags = p.fragments['b']['1'];
-        let yFrags = p.fragments['y']['1'];
 
-        let bMatches = matchFragments(s.mz, bFrags);
-        let yMatches = matchFragments(s.mz, yFrags);
-        
-        let bTotal = 0;
-        let yTotal = 0;
+        for(let idx=startIdx; idx<=endIdx; idx++) {
+          let s = sortedSpectra[idx];
+          let lowerNeutral = (s.pepmass-errorRange) * s.charge - s.charge;
+          let upperNeutral = (s.pepmass+errorRange) * s.charge - s.charge;
+          if(p.mass<lowerNeutral || p.mass>upperNeutral) { continue; }
+          let bFrags = p.fragments['b']['1'];
+          let yFrags = p.fragments['y']['1'];
 
-        for(var k=0; k<bMatches.length; k++) {
-          let m = bMatches[k];
-          bTotal += s.intensity[m];
+          let bMatches = matchFragments(s.mz, bFrags);
+          let yMatches = matchFragments(s.mz, yFrags);
+          
+          let bTotal = 0;
+          let yTotal = 0;
+
+          for(var k=0; k<bMatches.length; k++) {
+            let m = bMatches[k];
+            bTotal += s.intensity[m];
+          }
+
+          for(var k=0; k<yMatches.length; k++) {
+            let m = yMatches[k];
+            yTotal += s.intensity[m];
+          }
+
+          let score = (bTotal + yTotal) * factorialize(bMatches.length) * factorialize(yMatches.length);
+
+          let spectrumMatch = {
+            spectrum: s.title,
+            accession: p.accession,
+            sequence: p.sequence,
+            modifications: p.modifications,
+            score: score
+          }
+          s.matches.push(spectrumMatch);
         }
-
-        for(var k=0; k<yMatches.length; k++) {
-          let m = yMatches[k];
-          yTotal += s.intensity[m];
-        }
-
-        let score = (bTotal + yTotal) * factorialize(bMatches.length) * factorialize(yMatches.length);
-
-        let spectrumMatch = {
-          spectrum: s.title,
-          accession: p.accession,
-          sequence: p.sequence,
-          modifications: p.modifications,
-          score: score
-        }
-        s.matches.push(spectrumMatch);
         
       }
   
@@ -273,4 +284,8 @@ function factorialize(num) {
 // This is from StackOverflow but I'm reading it off my phone so I don't have the full URL. The ID or something is 1374126
 Array.prototype.extend = function(other_array) {
   other_array.forEach(function(v) {this.push(v)}, this);
+}
+
+function getSum(total, num) {
+  return total + num;
 }
