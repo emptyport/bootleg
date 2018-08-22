@@ -118,8 +118,8 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
           let bFrags = p.fragments['b']['1'];
           let yFrags = p.fragments['y']['1'];
 
-          let bMatches = matchFragments(s.mz, bFrags);
-          let yMatches = matchFragments(s.mz, yFrags);
+          let bMatches = matchFragments(s.mz, bFrags, config);
+          let yMatches = matchFragments(s.mz, yFrags, config);
           
           let bTotal = 0;
           let yTotal = 0;
@@ -183,11 +183,11 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
   });
 });
 
-function matchFragments(mz, fragments) {
+function matchFragments(mz, fragments, config) {
   let matches = [];
   for(var i=0; i<fragments.length; i++) {
     let closestMatch = closestIdx(fragments[i], mz);
-    if(Math.abs(mz[closestMatch] - fragments[i]) < 0.5) {
+    if(Math.abs(mz[closestMatch] - fragments[i]) < config.fragmentTol) {
       matches.push(closestMatch);
     }
   }
