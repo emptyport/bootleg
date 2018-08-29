@@ -1,0 +1,16 @@
+peptide db for cascading search
+{
+    0 missed cleavages: [dbEntries],
+    1 missed cleavages: [dbEntries],
+    etc.
+}
+
+once spectra and fasta entries are sorted, can traverse both arrays at essentially the same time so that we don't need to do too much searching. could also discard the lower mass stuff once we pass it which would clear up memory as well
+
++----------+
+| spectra  |
++----------+
+   | | correlated search window between the two arrays
++----------+
+|  fasta   |
++----------+

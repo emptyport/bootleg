@@ -1,7 +1,12 @@
 {
+    "fastaOptions": {
+        "definition": "gi|accession|description",
+        "delimiter": "|"
+    },
+    "enzyme": "trypsin",
     "minLength": 8,
     "maxLength": 30,
-    "missedCleavages": 2,
+    "missedCleavages": 1,
     "fragmentCharge": [1],
     "modifications": [
         {
@@ -35,5 +40,7 @@
         }
     ],
     "precursorTol": 20,
-    "fragmentTol": 0.5
+    "fragmentTol": 0.5,
+    "createDecoy": true,
+    "decoyTag": "_REVERSED"
 }

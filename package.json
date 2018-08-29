@@ -22,7 +22,8 @@
     "csv-writer": "^1.0.0",
     "fasta-js": "^1.0.1",
     "js-mgf": "^1.1.0",
-    "peptide-cutter": "^1.0.5",
+    "minimist": "^1.2.0",
+    "peptide-cutter": "^2.0.0",
     "peptide-fragmenter": "^1.0.1",
     "peptide-modifier": "^1.0.2"
   },
