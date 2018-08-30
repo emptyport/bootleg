@@ -8,7 +8,7 @@
     "maxLength": 30,
     "missedCleavages": 1,
     "ionTypes": ["b", "y"],
-    "fragmentCharge": [1],
+    "fragmentCharge": [1, 2],
     "numVariableMods": 2,
     "modifications": [
         {

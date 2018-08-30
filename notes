@@ -14,3 +14,24 @@ once spectra and fasta entries are sorted, can traverse both arrays at essential
 +----------+
 |  fasta   |
 +----------+
+
+how to handle matches
+Array where each index corresponds to spectrum. Each index has an object where the best score, fdr, and an array of matches is stored
+[
+    {
+        best score
+        fdr (for best score)
+        idx of best match (out of matches)
+        matches: [
+            {
+                minimallyModified/modified
+                # missed cleavages
+                index in database
+                score
+                m/z error
+            }
+        ]
+    }
+    {},
+    etc.
+]

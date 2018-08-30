@@ -83,9 +83,33 @@ const parseSpectra = (data) => {
 }
 
 class Matches {
-  constructor() {
-    this.matches = [];
+  constructor(length) {
+    this.matches = new Array(length);
+    let matchTemplate = {
+      bestScore: 0,
+      fdr: 1,
+      bestMatch: 0,
+      matches: []
+    }
+    this.matches.fill(matchTemplate);
   }
+
+  addMatch(index, modType, missedCleavages, fastaIndex, score, mzError) {
+    let newMatch = {
+      modType: modType,
+      missedCleavages: missedCleavages,
+      fastaIndex: fastaIndex,
+      score: score,
+      mzError: mzError
+    };
+    let spectrumMatch = this.matches[index];
+    if(score > spectrumMatch.bestScore) {
+      this.matches[index].bestScore = score;
+      this.matches[index].bestMatch = this.matches[index].matches.length;
+    }
+    this.matches[index].matches.push(newMatch);
+  }
+
 }
 
 class Database {
@@ -200,25 +224,73 @@ const parseFasta = (data, config) => {
 
 }
 
-const runCascade = (fastaDB, spectra, config) => {
+const matchFragments = (mz, fragments, config)=> {
+  let matches = [];
+  for(var i=0; i<fragments.length; i++) {
+    let closestMatch = closestIdx(fragments[i], mz);
+    if(Math.abs(mz[closestMatch] - fragments[i]) < config.fragmentTol) {
+      matches.push(closestMatch);
+    }
+  }
+  return matches;
+}
+
+// https://stackoverflow.com/questions/8584902/get-closest-number-out-of-array
+const closestIdx = (num, arr) => {
+  var mid;
+  var lo = 0;
+  var hi = arr.length - 1;
+  while (hi - lo > 1) {
+      mid = Math.floor ((lo + hi) / 2);
+      if (arr[mid] < num) {
+          lo = mid;
+      } else {
+          hi = mid;
+      }
+  }
+  if (num - arr[lo] <= arr[hi] - num) {
+      return lo;
+  }
+  return hi;
+}
+
+const runCascade = (fastaDB, spectra, config, matches) => {
   let peptideList;
   for(let i=0; i<=config.missedCleavages; i++) {
     console.log('Running search against minimally modified peptides with '+i+' missed cleavages');
     peptideList = fastaDB.minimallyModified[i];
-    runSearch(peptideList, spectra, config);
+    runSearch(peptideList, spectra, config, matches);
     console.log('Running search against modified peptides with '+i+' missed cleavages');
     peptideList = fastaDB.modified[i];
-    runSearch(peptideList, spectra, config);
+    runSearch(peptideList, spectra, config, matches);
   }
 }
 
-const runSearch = (peptideList, spectra, config) => {
+const runSearch = (peptideList, spectra, config, matches) => {
   if(peptideList.length === 0) {
     console.log("N/A");
     return;
   }
 
+  let startIdx = 0;
+  let endIdx = 0;
+  for(let i=0; i<spectra.length; i++) {
+    let spectrum = spectra[i];
+    let errorRange = config.precursorTol / 1000000 * spectrum.neutral_mass;
+    let lowerBound = spectrum.neutral_mass - errorRange;
+    let upperBound = spectrum.neutral_mass + errorRange;
 
+    while(peptideList[startIdx].mass < lowerBound && startIdx<peptideList.length) {
+      startIdx++;
+    }
+    while(peptideList[endIdx].mass <= upperBound && endIdx<peptideList.length) {
+      endIdx++;
+    }
+
+    for(let j=startIdx; j<=endIdx; j++) {
+      console.log(peptideList[j]);
+    }
+  }
 
 
 }
@@ -239,7 +311,8 @@ module.exports.search = (spectra_data, fasta_data, config) => {
   let fastaDB = parseFasta(fasta_data, config);
   
   console.log('Matching peptides to spectra...');
-  runCascade(fastaDB, spectra, config)
+  let matches = new Matches(spectraLength);
+  runCascade(fastaDB, spectra, config, matches);
   
 
 
