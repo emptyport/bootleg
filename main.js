@@ -42,7 +42,7 @@ fs.readFile(args.f, 'utf-8', function(fasta_err, fasta_data) {
     console.log('Reading in config...');
     let config = require(args.c);
 
-    console.log('Running search...');
+    console.log('Running...');
     bootleg.search(spectra_data, fasta_data, config);
     
     console.log('Finished!');
