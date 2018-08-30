@@ -94,13 +94,12 @@ class Matches {
     this.matches.fill(matchTemplate);
   }
 
-  addMatch(index, modType, missedCleavages, fastaIndex, score, mzError) {
+  addMatch(index, modType, missedCleavages, fastaIndex, score) {
     let newMatch = {
       modType: modType,
       missedCleavages: missedCleavages,
       fastaIndex: fastaIndex,
       score: score,
-      mzError: mzError
     };
     let spectrumMatch = this.matches[index];
     if(score > spectrumMatch.bestScore) {
@@ -259,14 +258,14 @@ const runCascade = (fastaDB, spectra, config, matches) => {
   for(let i=0; i<=config.missedCleavages; i++) {
     console.log('Running search against minimally modified peptides with '+i+' missed cleavages');
     peptideList = fastaDB.minimallyModified[i];
-    runSearch(peptideList, spectra, config, matches);
+    runSearch(peptideList, spectra, config, matches, "minimallyModified");
     console.log('Running search against modified peptides with '+i+' missed cleavages');
     peptideList = fastaDB.modified[i];
-    runSearch(peptideList, spectra, config, matches);
+    runSearch(peptideList, spectra, config, matches, "modified");
   }
 }
 
-const runSearch = (peptideList, spectra, config, matches) => {
+const runSearch = (peptideList, spectra, config, matches, dbType) => {
   if(peptideList.length === 0) {
     console.log("N/A");
     return;
@@ -288,7 +287,41 @@ const runSearch = (peptideList, spectra, config, matches) => {
     }
 
     for(let j=startIdx; j<=endIdx; j++) {
-      console.log(peptideList[j]);
+      let currentPeptide = peptideList[j];
+      let matchedFragments = {};
+      // This is ugly looking. Iterate over ion types and then charge states
+      for(var ionType in currentPeptide.fragments) {
+        if(currentPeptide.fragments.hasOwnProperty(ionType)) {
+          matchedFragments[ionType] = {};
+          for(var chargeState in currentPeptide.fragments[ionType]) {
+            if(currentPeptide.fragments[ionType].hasOwnProperty(chargeState)) {
+              let fragmentMatches = matchFragments(spectrum.mz, currentPeptide.fragments[ionType][chargeState], config);
+              matchedFragments[ionType][chargeState] = fragmentMatches;
+            }
+          }
+        }
+      }
+      // This is essentially Morpheus scoring. We iterate over the matched
+      // indices and count how many we have and add it to the score. Then
+      // we add in the sum of the intensities (which are already normalized)
+      // so we get the fraction of matched peak intensity
+      let score = 0;
+      for(var ionType in matchedFragments) {
+        if(matchedFragments.hasOwnProperty(ionType)) {
+          for(var chargeState in matchedFragments[ionType]) {
+            if(matchedFragments[ionType].hasOwnProperty(chargeState)) {
+              let matchIdxArr = matchedFragments[ionType][chargeState];
+              let numIons = matchIdxArr.length;
+              score += numIons;
+              for(let k=0; k<matchIdxArr.length; k++) {
+                score += spectrum.intensity[k];
+              }
+            }
+          }
+        }
+      }
+      console.log(score);
+      matches.addMatch(i, dbType, currentPeptide.missedCleavages, j, score);
     }
   }
 
@@ -314,7 +347,7 @@ module.exports.search = (spectra_data, fasta_data, config) => {
   let matches = new Matches(spectraLength);
   runCascade(fastaDB, spectra, config, matches);
   
-
+  //console.log(matches);
 
 
 }

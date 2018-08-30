@@ -28,10 +28,10 @@ Array where each index corresponds to spectrum. Each index has an object where t
                 # missed cleavages
                 index in database
                 score
-                m/z error
             }
         ]
     }
     {},
     etc.
 ]
+  addMatch(index, modType, missedCleavages, fastaIndex, score, mzError) {
