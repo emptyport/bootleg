@@ -26,5 +26,6 @@
     "precursorTol": 20,
     "fragmentTol": 0.5,
     "generateDecoy": true,
-    "decoyTag": "_REVERSED"
+    "decoyTag": "_REVERSED",
+    "fdrCutoff": 0.01
 }

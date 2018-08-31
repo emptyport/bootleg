@@ -85,13 +85,17 @@ const parseSpectra = (data) => {
 class Matches {
   constructor(length) {
     this.matches = new Array(length);
-    let matchTemplate = {
-      bestScore: 0,
-      fdr: 1,
-      bestMatch: 0,
-      matches: []
+    // Tried using the Array.fill method but it passes in the object
+    // reference instead of a new object. The below method keeps each
+    // array entry as it's own thing.
+    for(let i=0; i<length; i++) {
+      this.matches[i] = {
+        bestScore: 0,
+        fdr: 1,
+        bestMatch: 0,
+        matchedPSMs: []
+      };
     }
-    this.matches.fill(matchTemplate);
   }
 
   addMatch(index, modType, missedCleavages, fastaIndex, score) {
@@ -104,9 +108,9 @@ class Matches {
     let spectrumMatch = this.matches[index];
     if(score > spectrumMatch.bestScore) {
       this.matches[index].bestScore = score;
-      this.matches[index].bestMatch = this.matches[index].matches.length;
+      this.matches[index].bestMatch = this.matches[index].matchedPSMs.length;
     }
-    this.matches[index].matches.push(newMatch);
+    this.matches[index].matchedPSMs.push(newMatch);
   }
 
 }
@@ -275,6 +279,7 @@ const runSearch = (peptideList, spectra, config, matches, dbType) => {
   let endIdx = 0;
   for(let i=0; i<spectra.length; i++) {
     let spectrum = spectra[i];
+    if(spectrum.fdr < config.fdrCutoff) { continue; }
     let errorRange = config.precursorTol / 1000000 * spectrum.neutral_mass;
     let lowerBound = spectrum.neutral_mass - errorRange;
     let upperBound = spectrum.neutral_mass + errorRange;
@@ -320,7 +325,6 @@ const runSearch = (peptideList, spectra, config, matches, dbType) => {
           }
         }
       }
-      console.log(score);
       matches.addMatch(i, dbType, currentPeptide.missedCleavages, j, score);
     }
   }
@@ -347,8 +351,6 @@ module.exports.search = (spectra_data, fasta_data, config) => {
   let matches = new Matches(spectraLength);
   runCascade(fastaDB, spectra, config, matches);
   
-  //console.log(matches);
-
 
 }
 
