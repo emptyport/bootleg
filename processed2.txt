@@ -1,0 +1,876 @@
+Statistical profiling result from isolate-0x3788660-v8.log, (54529 ticks, 5358 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    775    1.4%          /lib/x86_64-linux-gnu/libc-2.23.so
+      2    0.0%          [vdso]
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+   3159    5.8%    5.9%  LazyCompile: *map native array.js:832:18
+   2654    4.9%    4.9%  Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+   2612    4.8%    4.9%  LazyCompile: *<anonymous> /home/mike/github/bootleg/bootleg.js:60:29
+   1431    2.6%    2.7%  LazyCompile: *module.exports.modify /home/mike/github/bootleg/node_modules/peptide-modifier/index.js:4:33
+   1431    2.6%    2.7%  Function: ~calculateMass /home/mike/github/bootleg/bootleg.js:9:23
+   1241    2.3%    2.3%  LazyCompile: *ions.map /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:106:35
+   1220    2.2%    2.3%  Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+    991    1.8%    1.8%  LazyCompile: *masses.map /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:117:25
+    900    1.7%    1.7%  LazyCompile: *InnerArrayFilter native array.js:755:26
+    654    1.2%    1.2%  LazyCompile: *sequenceList.filter.val /home/mike/github/bootleg/bootleg.js:38:37
+    636    1.2%    1.2%  LazyCompile: *sequenceList.map /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:51:35
+    558    1.0%    1.0%  LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+    551    1.0%    1.0%  LazyCompile: *QuickSort native array.js:574:19
+    528    1.0%    1.0%  LazyCompile: *InnerArrayForEach native array.js:776:27
+    431    0.8%    0.8%  Function: ~<anonymous> module.js:1:11
+    385    0.7%    0.7%  Function: ~cleave /home/mike/github/bootleg/node_modules/peptide-cutter/index.js:43:9
+    278    0.5%    0.5%  LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+    249    0.5%    0.5%  LazyCompile: *ArraySpeciesCreate native array.js:23:28
+    248    0.5%    0.5%  LazyCompile: *parse /home/mike/github/bootleg/node_modules/fasta-js/index.js:38:8
+    191    0.4%    0.4%  LazyCompile: *addPeptide /home/mike/github/bootleg/bootleg.js:140:13
+    190    0.3%    0.4%  LazyCompile: *forEach native array.js:794:22
+    145    0.3%    0.3%  LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-modifier/index.js:24:48
+    127    0.2%    0.2%  LazyCompile: ~k_combinations /home/mike/github/bootleg/node_modules/peptide-modifier/combinations.js:83:24
+    126    0.2%    0.2%  LazyCompile: *calculateIons /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:116:17
+    118    0.2%    0.2%  LazyCompile: *matchFragments /home/mike/github/bootleg/bootleg.js:261:24
+    117    0.2%    0.2%  RegExp: ([KR](?=[^P]))|((?<=W)K(?=P))|((?<=M)R(?=P))
+    115    0.2%    0.2%  LazyCompile: *filter native array.js:768:21
+    104    0.2%    0.2%  Function: ~GetThirdIndex native array.js:558:23
+     91    0.2%    0.2%  Function: ~QuickSort native array.js:574:19
+     54    0.1%    0.1%  LazyCompile: *InnerArrayJoin native array.js:275:24
+     47    0.1%    0.1%  LazyCompile: *peptide.modifications.map /home/mike/github/bootleg/bootleg.js:146:33
+     44    0.1%    0.1%  LazyCompile: *sequenceList.filter.val /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:45:37
+     41    0.1%    0.1%  LazyCompile: *join native array.js:288:19
+     40    0.1%    0.1%  LazyCompile: *k_combinations /home/mike/github/bootleg/node_modules/peptide-modifier/combinations.js:83:24
+     38    0.1%    0.1%  LazyCompile: *add native collection.js:111:16
+     35    0.1%    0.1%  LazyCompile: *GenericArrayReverse native array.js:369:29
+     30    0.1%    0.1%  LazyCompile: *toUpperCase native i18n.js:1257:25
+     29    0.1%    0.1%  LazyCompile: *toLowerCase native i18n.js:1253:25
+     28    0.1%    0.1%  LazyCompile: *next native collection-iterator.js:14:27
+     19    0.0%    0.0%  LazyCompile: *from native array.js:1061:19
+     18    0.0%    0.0%  LazyCompile: *ConvertToString native array.js:134:25
+     18    0.0%    0.0%  Function: ~module.js
+     17    0.0%    0.0%  LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     17    0.0%    0.0%  LazyCompile: *DoJoin native array.js:96:16
+     16    0.0%    0.0%  LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/js-mgf/index.js:9:25
+     14    0.0%    0.0%  Function: ~Join native array.js:121:14
+     10    0.0%    0.0%  Function: ~PeptideCutter /home/mike/github/bootleg/node_modules/peptide-cutter/index.js:4:14
+      9    0.0%    0.0%  LazyCompile: *addMatch /home/mike/github/bootleg/bootleg.js:109:11
+      9    0.0%    0.0%  Function: ~<anonymous> internal/module.js:1:11
+      8    0.0%    0.0%  LazyCompile: *Set native collection.js:96:24
+      6    0.0%    0.0%  Function: ~map native array.js:832:18
+      5    0.0%    0.0%  LazyCompile: *values native collection-iterator.js:42:19
+      5    0.0%    0.0%  LazyCompile: *GetThirdIndex native array.js:558:23
+      5    0.0%    0.0%  Function: ~InnerArrayForEach native array.js:776:27
+      5    0.0%    0.0%  Function: ~<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+      4    0.0%    0.0%  RegExp: [ \\t]+
+      4    0.0%    0.0%  Function: ~k_combinations /home/mike/github/bootleg/node_modules/peptide-modifier/combinations.js:83:24
+      4    0.0%    0.0%  Function: ~GetMethod native v8natives.js:27:19
+      4    0.0%    0.0%  Function: ~GetIterator native v8natives.js:60:21
+      4    0.0%    0.0%  Function: ~<anonymous> /home/mike/github/bootleg/bootleg.js:60:29
+      3    0.0%    0.0%  LazyCompile: *reverse native array.js:392:22
+      3    0.0%    0.0%  LazyCompile: *cleave /home/mike/github/bootleg/node_modules/peptide-cutter/index.js:43:9
+      3    0.0%    0.0%  LazyCompile: *StackPush native array.js:81:19
+      3    0.0%    0.0%  Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+      3    0.0%    0.0%  Function: ~module.exports.parse /home/mike/github/bootleg/node_modules/js-mgf/index.js:1:94
+      3    0.0%    0.0%  Function: ~module.exports.modify /home/mike/github/bootleg/node_modules/peptide-modifier/index.js:4:33
+      3    0.0%    0.0%  Function: ~StackHas native array.js:87:18
+      3    0.0%    0.0%  Function: ~InnerArrayReduce native array.js:894:26
+      2    0.0%    0.0%  LazyCompile: *match native string.js:17:23
+      2    0.0%    0.0%  LazyCompile: *<anonymous> native array.js:568:17
+      2    0.0%    0.0%  Function: ~prepareMatches /home/mike/github/bootleg/bootleg.js:168:24
+      2    0.0%    0.0%  Function: ~matchFragments /home/mike/github/bootleg/bootleg.js:261:24
+      2    0.0%    0.0%  Function: ~match native string.js:17:23
+      2    0.0%    0.0%  Function: ~from native array.js:1061:19
+      2    0.0%    0.0%  Function: ~dirname path.js:1344:28
+      2    0.0%    0.0%  Function: ~DoJoin native array.js:96:16
+      2    0.0%    0.0%  Function: ~<anonymous> /home/mike/github/bootleg/node_modules/js-mgf/index.js:9:25
+      1    0.0%    0.0%  RegExp: \\r?\\n
+      1    0.0%    0.0%  LazyCompile: *sortedArr.map /home/mike/github/bootleg/bootleg.js:303:31
+      1    0.0%    0.0%  LazyCompile: *closestIdx /home/mike/github/bootleg/bootleg.js:273:20
+      1    0.0%    0.0%  LazyCompile: *UseSparseVariant native array.js:63:26
+      1    0.0%    0.0%  LazyCompile: *<anonymous> native array.js:1078:5
+      1    0.0%    0.0%  Function: ~sort native array.js:749:19
+      1    0.0%    0.0%  Function: ~slice native string.js:41:21
+      1    0.0%    0.0%  Function: ~sequenceList.map /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:51:35
+      1    0.0%    0.0%  Function: ~runInThisContext bootstrap_node.js:465:28
+      1    0.0%    0.0%  Function: ~parseSpectra /home/mike/github/bootleg/bootleg.js:73:22
+      1    0.0%    0.0%  Function: ~normalizeStringPosix path.js:99:30
+      1    0.0%    0.0%  Function: ~indexesOf /home/mike/github/bootleg/node_modules/peptide-modifier/index.js:73:19
+      1    0.0%    0.0%  Function: ~getOptions fs.js:64:20
+      1    0.0%    0.0%  Function: ~finishMaybe _stream_writable.js:581:21
+      1    0.0%    0.0%  Function: ~Socket._writeGeneric net.js:703:42
+      1    0.0%    0.0%  Function: ~Set native collection.js:96:24
+      1    0.0%    0.0%  Function: ~Module._extensions..json module.js:585:39
+      1    0.0%    0.0%  Function: ~InsertionSort native array.js:543:23
+      1    0.0%    0.0%  Function: ~InnerArraySort native array.js:530:24
+      1    0.0%    0.0%  Function: ~InnerArrayJoin native array.js:275:24
+      1    0.0%    0.0%  Function: ~<anonymous> /home/mike/github/bootleg/node_modules/peptide-modifier/index.js:24:48
+      1    0.0%    0.0%  Function: ~<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+
+ [C++]:
+   ticks  total  nonlib   name
+   2133    3.9%    4.0%  v8::internal::JSObject::AddDataElement(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::ShouldThrow)
+   1691    3.1%    3.1%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyDoubleElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)5> >::Add(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, unsigned int)
+   1163    2.1%    2.2%  v8::internal::Runtime_CreateDataProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    859    1.6%    1.6%  v8::internal::Object::AddDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::ShouldThrow, v8::internal::Object::StoreFromKeyed)
+    823    1.5%    1.5%  v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, bool*, v8::internal::LookupIterator::Configuration)
+    662    1.2%    1.2%  v8::internal::JSObjectWalkVisitor<v8::internal::AllocationSiteUsageContext>::StructureWalk(v8::internal::Handle<v8::internal::JSObject>)
+    559    1.0%    1.0%  v8::internal::ScavengeWeakObjectRetainer::RetainAs(v8::internal::Object*)
+    536    1.0%    1.0%  v8::internal::IncrementalMarking::Step(unsigned long, v8::internal::IncrementalMarking::CompletionAction, v8::internal::IncrementalMarking::ForceCompletionAction, v8::internal::StepOrigin)
+    528    1.0%    1.0%  void v8::internal::LookupIterator::Start<true>()
+    494    0.9%    0.9%  v8::internal::JSReceiver::CreateDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::Object::ShouldThrow)
+    406    0.7%    0.8%  v8::internal::JSObject::CreateDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::Object::ShouldThrow)
+    391    0.7%    0.7%  v8::internal::Scavenger::CheckAndScavengeObject(v8::internal::Heap*, unsigned char*) [clone .isra.624]
+    379    0.7%    0.7%  void v8::internal::BodyDescriptorBase::IterateBodyImpl<v8::internal::StaticScavengeVisitor>(v8::internal::Heap*, v8::internal::HeapObject*, int, int)
+    364    0.7%    0.7%  void v8::internal::LookupIterator::NextInternal<true>(v8::internal::Map*, v8::internal::JSReceiver*)
+    346    0.6%    0.6%  v8::internal::LookupIterator::State v8::internal::LookupIterator::LookupInRegularHolder<true>(v8::internal::Map*, v8::internal::JSReceiver*) [clone .part.81]
+    346    0.6%    0.6%  v8::internal::IsMoreGeneralElementsKindTransition(v8::internal::ElementsKind, v8::internal::ElementsKind)
+    324    0.6%    0.6%  v8::internal::JSObject::IsExtensible(v8::internal::Handle<v8::internal::JSObject>)
+    307    0.6%    0.6%  v8::internal::StringTable::LookupString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+    305    0.6%    0.6%  v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+    303    0.6%    0.6%  v8::internal::MemoryChunkIterator::next()
+    302    0.6%    0.6%  v8::internal::JSObject::DefineOwnPropertyIgnoreAttributes(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::ShouldThrow, v8::internal::JSObject::AccessorInfoHandling)
+    301    0.6%    0.6%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+    289    0.5%    0.5%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyDoubleElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)5> >::GetEntryForIndex(v8::internal::Isolate*, v8::internal::JSObject*, v8::internal::FixedArrayBase*, unsigned int)
+    279    0.5%    0.5%  v8::internal::PagedSpace::Available()
+    229    0.4%    0.4%  v8::internal::String::SlowEquals(v8::internal::String*)
+    220    0.4%    0.4%  v8::internal::IterateAndScavengePromotedObjectsVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+    212    0.4%    0.4%  v8::internal::JSObject::GetElementsAccessor()
+    204    0.4%    0.4%  v8::internal::Runtime_KeyedGetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    203    0.4%    0.4%  v8::internal::JSObject::MigrateToMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+    197    0.4%    0.4%  v8::internal::Object::ArraySpeciesConstructor(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+    185    0.3%    0.3%  v8::internal::Compiler::PostInstantiation(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::PretenureFlag)
+    180    0.3%    0.3%  v8::internal::String::Flatten(v8::internal::Handle<v8::internal::String>, v8::internal::PretenureFlag)
+    173    0.3%    0.3%  v8::internal::SharedFunctionInfo::SearchOptimizedCodeMap(v8::internal::Context*, v8::internal::BailoutId)
+    173    0.3%    0.3%  v8::internal::Heap::Scavenge()
+    168    0.3%    0.3%  v8::internal::IncrementalMarking::MarkGrey(v8::internal::Heap*, v8::internal::HeapObject*)
+    159    0.3%    0.3%  v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+    158    0.3%    0.3%  v8::internal::CopyCachedOneByteCharsToArray(v8::internal::Heap*, unsigned char const*, v8::internal::FixedArray*, int)
+    157    0.3%    0.3%  v8::internal::Heap::RecordWrite(v8::internal::Object*, int, v8::internal::Object*)
+    151    0.3%    0.3%  v8::internal::JSObject::FastPropertyAtPut(v8::internal::FieldIndex, v8::internal::Object*)
+    149    0.3%    0.3%  memchr
+    148    0.3%    0.3%  v8::internal::(anonymous namespace)::CopyObjectToObjectElements(v8::internal::FixedArrayBase*, v8::internal::ElementsKind, unsigned int, v8::internal::FixedArrayBase*, v8::internal::ElementsKind, unsigned int, int)
+    138    0.3%    0.3%  v8::internal::JSArray::WouldChangeReadOnlyLength(v8::internal::Handle<v8::internal::JSArray>, unsigned int)
+    137    0.3%    0.3%  int v8::internal::FlexibleBodyVisitor<v8::internal::StaticScavengeVisitor, v8::internal::FlexibleBodyDescriptor<8>, int>::VisitSpecialized<32>(v8::internal::Map*, v8::internal::HeapObject*)
+    135    0.2%    0.3%  v8::internal::Map::IsUnboxedDoubleField(v8::internal::FieldIndex)
+    131    0.2%    0.2%  v8::internal::StringShape::StringShape(v8::internal::String const*)
+    129    0.2%    0.2%  v8::internal::Runtime_StringToArray(int, v8::internal::Object**, v8::internal::Isolate*)
+    126    0.2%    0.2%  v8::internal::JSReceiver::GetPropertyAttributes(v8::internal::LookupIterator*)
+    125    0.2%    0.2%  void v8::internal::BodyDescriptorBase::IteratePointers<v8::internal::IncrementalMarkingMarkingVisitor>(v8::internal::Heap*, v8::internal::HeapObject*, int, int)
+    120    0.2%    0.2%  v8::internal::LayoutDescriptorHelper::IsTagged(int, int, int*)
+    119    0.2%    0.2%  v8::internal::HashTable<v8::internal::StringTable, v8::internal::StringTableShape, v8::internal::HashTableKey*>::FindEntry(v8::internal::Isolate*, v8::internal::HashTableKey*)
+    117    0.2%    0.2%  void v8::internal::LookupIterator::Start<false>()
+    116    0.2%    0.2%  int v8::internal::FastAsciiConvert<false>(char*, char const*, int, bool*)
+    108    0.2%    0.2%  v8::internal::Object::Compare(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+    106    0.2%    0.2%  v8::internal::LookupIterator::WriteDataValue(v8::internal::Handle<v8::internal::Object>, bool)
+    105    0.2%    0.2%  v8::internal::Heap::CopyJSObject(v8::internal::JSObject*, v8::internal::AllocationSite*)
+     99    0.2%    0.2%  v8::internal::Factory::NewFunction(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::PretenureFlag)
+     99    0.2%    0.2%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+     96    0.2%    0.2%  v8::internal::String::GetFlatContent()
+     91    0.2%    0.2%  v8::internal::Runtime_NewClosure(int, v8::internal::Object**, v8::internal::Isolate*)
+     90    0.2%    0.2%  void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+     89    0.2%    0.2%  v8::internal::IncrementalMarking::MarkBlack(v8::internal::HeapObject*, int)
+     88    0.2%    0.2%  v8::internal::Heap::InitializeJSObjectBody(v8::internal::JSObject*, v8::internal::Map*, int)
+     86    0.2%    0.2%  v8::internal::(anonymous namespace)::UpdateDescriptorForValue(v8::internal::Handle<v8::internal::Map>, int, v8::internal::PropertyConstness, v8::internal::Handle<v8::internal::Object>)
+     84    0.2%    0.2%  void v8::internal::LookupIterator::NextInternal<false>(v8::internal::Map*, v8::internal::JSReceiver*)
+     83    0.2%    0.2%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::GrowCapacityAndConvertImpl(v8::internal::Handle<v8::internal::JSObject>, unsigned int)
+     81    0.1%    0.2%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateFixedDoubleArray(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+     78    0.1%    0.1%  v8::internal::Runtime_RegExpInitializeAndCompile(int, v8::internal::Object**, v8::internal::Isolate*)
+     78    0.1%    0.1%  v8::internal::Runtime_HasProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     78    0.1%    0.1%  v8::internal::LookupIterator::PrepareTransitionToDataProperty(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::StoreFromKeyed)
+     77    0.1%    0.1%  v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     74    0.1%    0.1%  v8::internal::HeapObject::map() const
+     74    0.1%    0.1%  v8::internal::Factory::NewFunctionFromSharedFunctionInfo(v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Context>, v8::internal::Handle<v8::internal::Cell>, v8::internal::PretenureFlag)
+     72    0.1%    0.1%  v8::internal::ShouldConvertToSlowElements(v8::internal::JSObject*, unsigned int, unsigned int, unsigned int*)
+     72    0.1%    0.1%  v8::internal::IncrementalMarking::WhiteToGreyAndPush(v8::internal::HeapObject*)
+     71    0.1%    0.1%  v8::internal::Scavenger::ScavengeObjectSlow(v8::internal::HeapObject**, v8::internal::HeapObject*)
+     71    0.1%    0.1%  v8::internal::JSRegExp::Initialize(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>)
+     71    0.1%    0.1%  v8::internal::Factory::NewJSArray(v8::internal::ElementsKind, v8::internal::PretenureFlag)
+     70    0.1%    0.1%  v8::internal::Builtin_Impl_ObjectKeys(v8::internal::BuiltinArguments, v8::internal::Isolate*)
+     69    0.1%    0.1%  v8::internal::String::IsOneByteRepresentation() const
+     69    0.1%    0.1%  v8::internal::Runtime_PushBlockContext(int, v8::internal::Object**, v8::internal::Isolate*)
+     69    0.1%    0.1%  v8::internal::HeapObject::SizeFromMap(v8::internal::Map*)
+     68    0.1%    0.1%  void v8::internal::BodyDescriptorBase::IterateBodyImpl<v8::internal::IncrementalMarkingMarkingVisitor>(v8::internal::Heap*, v8::internal::HeapObject*, int, int)
+     68    0.1%    0.1%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyDoubleElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)5> >::Pop(v8::internal::Handle<v8::internal::JSArray>)
+     68    0.1%    0.1%  int v8::internal::BinarySearch<(v8::internal::SearchMode)0, v8::internal::TransitionArray>(v8::internal::TransitionArray*, v8::internal::Name*, int, int*)
+     67    0.1%    0.1%  v8::internal::Runtime_ArraySpeciesConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+     67    0.1%    0.1%  v8::internal::Object::ToInt32(int*)
+     67    0.1%    0.1%  v8::internal::Builtin_ArrayPop(int, v8::internal::Object**, v8::internal::Isolate*)
+     66    0.1%    0.1%  v8::internal::JSObject::set_elements(v8::internal::FixedArrayBase*, v8::internal::WriteBarrierMode) [clone .part.303] [clone .constprop.574]
+     66    0.1%    0.1%  v8::internal::Isolate::get_initial_js_array_map(v8::internal::ElementsKind)
+     64    0.1%    0.1%  v8::internal::Runtime_StringToUpperCaseI18N(int, v8::internal::Object**, v8::internal::Isolate*)
+     63    0.1%    0.1%  v8::internal::InternalizedStringKey::IsMatch(v8::internal::Object*)
+     61    0.1%    0.1%  v8::internal::TransitionArray::SearchDetails(int, v8::internal::PropertyKind, v8::internal::PropertyAttributes, int*)
+     61    0.1%    0.1%  v8::internal::RegExpImpl::Compile(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+     61    0.1%    0.1%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)1>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+     60    0.1%    0.1%  v8::internal::PromotionQueue::insert(v8::internal::HeapObject*, int, bool)
+     59    0.1%    0.1%  v8::internal::Object::ToNumber(v8::internal::Handle<v8::internal::Object>)
+     58    0.1%    0.1%  v8::internal::Heap::AllocateJSObjectFromMap(v8::internal::Map*, v8::internal::PretenureFlag, v8::internal::AllocationSite*)
+     58    0.1%    0.1%  v8::internal::CompilationCacheRegExp::Lookup(v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+     56    0.1%    0.1%  write
+     56    0.1%    0.1%  v8::internal::Factory::NewFunctionFromSharedFunctionInfo(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Cell>, v8::internal::PretenureFlag)
+     56    0.1%    0.1%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::GetEntryForIndex(v8::internal::Isolate*, v8::internal::JSObject*, v8::internal::FixedArrayBase*, unsigned int)
+     55    0.1%    0.1%  v8::internal::Runtime_RegExpExec(int, v8::internal::Object**, v8::internal::Isolate*)
+     54    0.1%    0.1%  v8::internal::Factory::NewNumber(double, v8::internal::PretenureFlag)
+     53    0.1%    0.1%  v8::internal::RegExpImpl::AtomExec(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::Handle<v8::internal::String>, int, v8::internal::Handle<v8::internal::RegExpMatchInfo>)
+     53    0.1%    0.1%  v8::internal::LookupIterator::ApplyTransitionToDataProperty(v8::internal::Handle<v8::internal::JSObject>)
+     53    0.1%    0.1%  v8::internal::JSObject::FastPropertyAt(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Representation, v8::internal::FieldIndex)
+     52    0.1%    0.1%  v8::internal::TransitionArray::SearchTransition(v8::internal::Map*, v8::internal::PropertyKind, v8::internal::Name*, v8::internal::PropertyAttributes)
+     52    0.1%    0.1%  v8::internal::Heap::IterateAndScavengePromotedObject(v8::internal::HeapObject*, int, bool)
+     51    0.1%    0.1%  v8::internal::JSFunction::EnsureLiterals(v8::internal::Handle<v8::internal::JSFunction>)
+     50    0.1%    0.1%  v8::internal::LookupIterator::GetDataValue() const
+     50    0.1%    0.1%  v8::internal::InternalizedStringKey::Hash()
+     49    0.1%    0.1%  v8::internal::(anonymous namespace)::ConvertToLower(v8::internal::Handle<v8::internal::String>, v8::internal::Isolate*)
+     48    0.1%    0.1%  void v8::internal::FlexibleBodyVisitor<v8::internal::IncrementalMarkingMarkingVisitor, v8::internal::FlexibleBodyDescriptor<8>, void>::VisitSpecialized<56>(v8::internal::Map*, v8::internal::HeapObject*)
+     48    0.1%    0.1%  v8::internal::FixedArray::set(int, v8::internal::Object*)
+     47    0.1%    0.1%  v8::internal::Zone::Zone(v8::internal::AccountingAllocator*, char const*)
+     47    0.1%    0.1%  v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, unsigned char*)
+     47    0.1%    0.1%  v8::internal::(anonymous namespace)::ConvertToUpper(v8::internal::Handle<v8::internal::String>, v8::internal::Isolate*)
+     47    0.1%    0.1%  __GI___pthread_mutex_lock
+     46    0.1%    0.1%  v8::internal::JSObject::GetElementsTransitionMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::ElementsKind)
+     45    0.1%    0.1%  v8::internal::StoreBuffer::InsertDuringRuntime(v8::internal::StoreBuffer*, unsigned char*)
+     45    0.1%    0.1%  v8::internal::Runtime_Compare(int, v8::internal::Object**, v8::internal::Isolate*)
+     45    0.1%    0.1%  v8::internal::Context::AddOptimizedFunction(v8::internal::JSFunction*)
+     44    0.1%    0.1%  v8::internal::Object* v8::internal::VisitWeakList<v8::internal::JSFunction>(v8::internal::Heap*, v8::internal::Object*, v8::internal::WeakObjectRetainer*)
+     44    0.1%    0.1%  v8::internal::Heap::CanMoveObjectStart(v8::internal::HeapObject*)
+     43    0.1%    0.1%  v8::internal::Heap::AllocateUninitializedFixedArray(int)
+     43    0.1%    0.1%  v8::internal::DescriptorArray::GetDetails(int)
+     43    0.1%    0.1%  int v8::internal::FastAsciiConvert<true>(char*, char const*, int, bool*)
+     42    0.1%    0.1%  void v8::internal::FlexibleBodyVisitor<v8::internal::IncrementalMarkingMarkingVisitor, v8::internal::FlexibleBodyDescriptor<8>, void>::VisitSpecialized<32>(v8::internal::Map*, v8::internal::HeapObject*)
+     42    0.1%    0.1%  v8::internal::String::SlowFlatten(v8::internal::Handle<v8::internal::ConsString>, v8::internal::PretenureFlag)
+     42    0.1%    0.1%  v8::internal::Map::TransitionToDataProperty(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::Object::StoreFromKeyed)
+     42    0.1%    0.1%  v8::internal::Heap::Allocate(v8::internal::Map*, v8::internal::AllocationSpace, v8::internal::AllocationSite*)
+     42    0.1%    0.1%  v8::internal::Handle<v8::internal::JSFunction> v8::internal::Factory::New<v8::internal::JSFunction>(v8::internal::Handle<v8::internal::Map>, v8::internal::AllocationSpace)
+     41    0.1%    0.1%  v8::internal::Runtime_StringToLowerCaseI18N(int, v8::internal::Object**, v8::internal::Isolate*)
+     41    0.1%    0.1%  v8::internal::Factory::NewJSObjectFromMap(v8::internal::Handle<v8::internal::Map>, v8::internal::PretenureFlag, v8::internal::Handle<v8::internal::AllocationSite>)
+     40    0.1%    0.1%  v8::internal::Builtin_ObjectKeys(int, v8::internal::Object**, v8::internal::Isolate*)
+     39    0.1%    0.1%  v8::internal::Heap::AllocateRawOneByteString(int, v8::internal::PretenureFlag)
+     39    0.1%    0.1%  v8::internal::Context::FunctionMapIndex(v8::internal::LanguageMode, v8::internal::FunctionKind) [clone .part.13]
+     38    0.1%    0.1%  v8::internal::Object::ConvertToNumber(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+     38    0.1%    0.1%  v8::internal::Factory::NewUninitializedFixedArray(int)
+     38    0.1%    0.1%  v8::internal::Factory::NewJSArrayWithElements(v8::internal::Handle<v8::internal::FixedArrayBase>, v8::internal::ElementsKind, int, v8::internal::PretenureFlag)
+     37    0.1%    0.1%  v8::internal::NameDictionaryBase<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::FindEntry(v8::internal::Handle<v8::internal::Name>)
+     37    0.1%    0.1%  bool v8::internal::JSObject::UpdateAllocationSite<(v8::internal::AllocationSiteUpdateMode)0>(v8::internal::Handle<v8::internal::JSObject>, v8::internal::ElementsKind)
+     36    0.1%    0.1%  v8::internal::Object::GetProperty(v8::internal::LookupIterator*)
+     36    0.1%    0.1%  v8::internal::Heap::OnMoveEvent(v8::internal::HeapObject*, v8::internal::HeapObject*, int)
+     36    0.1%    0.1%  v8::internal::Heap::ClearRecordedSlot(v8::internal::HeapObject*, v8::internal::Object**)
+     36    0.1%    0.1%  v8::internal::CompilationCacheTable::LookupRegExp(v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+     35    0.1%    0.1%  v8::internal::Heap::AllocateFixedArray(int, v8::internal::PretenureFlag)
+     35    0.1%    0.1%  v8::internal::Factory::NewBlockContext(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::Handle<v8::internal::Context>, v8::internal::Handle<v8::internal::ScopeInfo>)
+     35    0.1%    0.1%  v8::internal::EscapeRegExpSource(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+     35    0.1%    0.1%  v8::internal::Builtin_ArrayShift(int, v8::internal::Object**, v8::internal::Isolate*)
+     35    0.1%    0.1%  node::(anonymous namespace)::ContextifyScript::New(v8::FunctionCallbackInfo<v8::Value> const&)
+     34    0.1%    0.1%  void v8::internal::BodyDescriptorBase::IterateBodyImpl<v8::internal::ObjectVisitor>(v8::internal::HeapObject*, int, int, v8::internal::ObjectVisitor*)
+     34    0.1%    0.1%  v8::internal::JSRegExp::Initialize(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+     33    0.1%    0.1%  v8::internal::LargeObjectSpace::Contains(v8::internal::HeapObject*)
+     32    0.1%    0.1%  v8::internal::Space::AllocationStep(unsigned char*, int)
+     32    0.1%    0.1%  v8::internal::Heap::LeftTrimFixedArray(v8::internal::FixedArrayBase*, int)
+     31    0.1%    0.1%  v8::internal::Factory::NewRawOneByteString(int, v8::internal::PretenureFlag)
+     31    0.1%    0.1%  do_futex_wait
+     30    0.1%    0.1%  v8::internal::Factory::CopyJSObjectWithAllocationSite(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::AllocationSite>)
+     30    0.1%    0.1%  v8::internal::AllocationResult::AllocationResult(v8::internal::Object*)
+     29    0.1%    0.1%  v8::internal::HashTable<v8::internal::NameDictionary, v8::internal::NameDictionaryShape, v8::internal::Handle<v8::internal::Name> >::FindEntry(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Name>)
+     28    0.1%    0.1%  v8::internal::CompilationCache::LookupRegExp(v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+     28    0.1%    0.1%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyDoubleElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)5> >::Shift(v8::internal::Handle<v8::internal::JSArray>)
+     27    0.0%    0.1%  _init
+     26    0.0%    0.0%  v8::internal::JSArray::HasReadOnlyLength(v8::internal::Handle<v8::internal::JSArray>)
+     26    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::PrependElementIndices(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::FixedArrayBase>, v8::internal::Handle<v8::internal::FixedArray>, v8::internal::GetKeysConversion, v8::internal::PropertyFilter)
+     26    0.0%    0.0%  __new_sem_post
+     25    0.0%    0.0%  v8::internal::Isolate::UpdateArrayProtectorOnSetElement(v8::internal::Handle<v8::internal::JSObject>)
+     25    0.0%    0.0%  v8::internal::(anonymous namespace)::CopyDoubleToObjectElements(v8::internal::FixedArrayBase*, unsigned int, v8::internal::FixedArrayBase*, unsigned int, int)
+     25    0.0%    0.0%  mmap
+     24    0.0%    0.0%  v8::internal::Heap::AllocateHeapNumber(v8::internal::MutableMode, v8::internal::PretenureFlag)
+     23    0.0%    0.0%  void v8::internal::BodyDescriptorApply<v8::internal::CallIterateBody, void, v8::internal::HeapObject*, int, v8::internal::ObjectVisitor*>(v8::internal::InstanceType, v8::internal::HeapObject*, int, v8::internal::ObjectVisitor*)
+     23    0.0%    0.0%  int v8::internal::FlexibleBodyVisitor<v8::internal::StaticScavengeVisitor, v8::internal::FlexibleBodyDescriptor<8>, int>::VisitSpecialized<56>(v8::internal::Map*, v8::internal::HeapObject*)
+     22    0.0%    0.0%  v8::internal::IncrementalMarking::TransferMark(v8::internal::Heap*, v8::internal::HeapObject*, v8::internal::HeapObject*)
+     21    0.0%    0.0%  v8::internal::MemoryChunk::Initialize(v8::internal::Heap*, unsigned char*, unsigned long, unsigned char*, unsigned char*, v8::internal::Executability, v8::internal::Space*, v8::base::VirtualMemory*)
+     21    0.0%    0.0%  v8::internal::FieldType::cast(v8::internal::Object*)
+     21    0.0%    0.0%  v8::internal::AllocationSiteUsageContext::ShouldCreateMemento(v8::internal::Handle<v8::internal::JSObject>)
+     21    0.0%    0.0%  v8::internal::(anonymous namespace)::Fast_ArrayConcat(v8::internal::Isolate*, v8::internal::BuiltinArguments*)
+     20    0.0%    0.0%  v8::internal::Map::TransitionElementsTo(v8::internal::Handle<v8::internal::Map>, v8::internal::ElementsKind)
+     20    0.0%    0.0%  v8::internal::Heap::AllocateRawFixedArray(int, v8::internal::PretenureFlag)
+     19    0.0%    0.0%  v8::internal::String::IndexOf(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>, int)
+     19    0.0%    0.0%  v8::internal::ElementsAccessor::Concat(v8::internal::Isolate*, v8::internal::Arguments*, unsigned int, unsigned int)
+     18    0.0%    0.0%  void v8::internal::Heap::UpdateAllocationSite<(v8::internal::Heap::UpdateAllocationSiteMode)0>(v8::internal::HeapObject*, v8::base::PointerTemplateHashMapImpl<v8::base::DefaultAllocationPolicy>*)
+     18    0.0%    0.0%  v8::internal::Runtime_StringBuilderConcat(int, v8::internal::Object**, v8::internal::Isolate*)
+     18    0.0%    0.0%  v8::internal::Object::ToUint32(unsigned int*)
+     18    0.0%    0.0%  v8::internal::HashTable<v8::internal::CompilationCacheTable, v8::internal::CompilationCacheShape, v8::internal::HashTableKey*>::FindEntry(v8::internal::Isolate*, v8::internal::HashTableKey*)
+     18    0.0%    0.0%  v8::internal::Builtin_StringPrototypeIncludes(int, v8::internal::Object**, v8::internal::Isolate*)
+     17    0.0%    0.0%  v8::internal::OrderedHashTable<v8::internal::OrderedHashSet, v8::internal::JSSetIterator, 1>::Rehash(v8::internal::Handle<v8::internal::OrderedHashSet>, int)
+     17    0.0%    0.0%  v8::internal::Map::NumberOfFields()
+     17    0.0%    0.0%  v8::internal::HeapObject::synchronized_set_map(v8::internal::Map*)
+     17    0.0%    0.0%  v8::internal::Factory::NewFixedArray(int, v8::internal::PretenureFlag)
+     16    0.0%    0.0%  v8::internal::HeapObject::GetIsolate() const
+     16    0.0%    0.0%  v8::internal::Builtin_ArrayConcat(int, v8::internal::Object**, v8::internal::Isolate*)
+     15    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+     15    0.0%    0.0%  v8::internal::Factory::NewHeapNumber(v8::internal::MutableMode, v8::internal::PretenureFlag)
+     14    0.0%    0.0%  v8::internal::StringSearch<unsigned char, unsigned char>::SingleCharSearch(v8::internal::StringSearch<unsigned char, unsigned char>*, v8::internal::Vector<unsigned char const>, int)
+     14    0.0%    0.0%  v8::internal::RegExpKey::IsMatch(v8::internal::Object*)
+     14    0.0%    0.0%  v8::internal::Object::NewStorageFor(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Representation)
+     14    0.0%    0.0%  v8::internal::NewSpace::ResetAllocationInfo()
+     14    0.0%    0.0%  v8::internal::IncrementalMarkingMarkingVisitor::VisitFixedArrayIncremental(v8::internal::Map*, v8::internal::HeapObject*)
+     14    0.0%    0.0%  v8::internal::Heap::CreateFillerObjectAt(unsigned char*, int, v8::internal::ClearRecordedSlots)
+     14    0.0%    0.0%  v8::internal::Heap::AdjustLiveBytes(v8::internal::HeapObject*, int)
+     14    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::Add(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, unsigned int)
+     13    0.0%    0.0%  v8::internal::RegExpImpl::Exec(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::Handle<v8::internal::String>, int, v8::internal::Handle<v8::internal::RegExpMatchInfo>)
+     13    0.0%    0.0%  __GI___pthread_mutex_unlock
+     12    0.0%    0.0%  v8::internal::Object::SetProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::LanguageMode, v8::internal::Object::StoreFromKeyed)
+     12    0.0%    0.0%  v8::internal::Object::ConvertToInteger(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+     12    0.0%    0.0%  v8::internal::JSObject::MakePrototypesFast(v8::internal::Handle<v8::internal::Object>, v8::internal::WhereToStart, v8::internal::Isolate*)
+     12    0.0%    0.0%  v8::internal::Heap::InitializeAllocationMemento(v8::internal::AllocationMemento*, v8::internal::AllocationSite*)
+     12    0.0%    0.0%  v8::internal::FlexibleBodyVisitor<v8::internal::StaticScavengeVisitor, v8::internal::FlexibleBodyDescriptor<16>, int>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+     12    0.0%    0.0%  munmap
+     11    0.0%    0.0%  v8::internal::Runtime_ForInEnumerate(int, v8::internal::Object**, v8::internal::Isolate*)
+     11    0.0%    0.0%  v8::internal::Heap::CopyFixedArrayUpTo(v8::internal::FixedArray*, int, v8::internal::PretenureFlag)
+     11    0.0%    0.0%  v8::internal::Factory::NewJSArrayStorage(v8::internal::Handle<v8::internal::JSArray>, int, int, v8::internal::ArrayStorageAllocationMode)
+     11    0.0%    0.0%  v8::internal::Compiler::NextCompilationTier(v8::internal::JSFunction*)
+     11    0.0%    0.0%  _IO_vfprintf
+     10    0.0%    0.0%  v8::internal::JSObject::HasEnumerableElements()
+     10    0.0%    0.0%  __libc_malloc
+      9    0.0%    0.0%  v8::internal::StoreBuffer::MoveEntriesToRememberedSet(int)
+      9    0.0%    0.0%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateFixedArray(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      9    0.0%    0.0%  v8::internal::Runtime_SetIteratorNext(int, v8::internal::Object**, v8::internal::Isolate*)
+      9    0.0%    0.0%  v8::internal::PromotionQueue::SetNewLimit(unsigned char*) [clone .part.57]
+      9    0.0%    0.0%  v8::internal::Heap::RightTrimFixedArray(v8::internal::FixedArrayBase*, int)
+      9    0.0%    0.0%  v8::internal::FieldType::Any()
+      8    0.0%    0.0%  v8::internal::StackFrame::ComputeType(v8::internal::StackFrameIteratorBase const*, v8::internal::StackFrame::State*)
+      8    0.0%    0.0%  v8::internal::Map::InstancesNeedRewriting(v8::internal::Map*, int, int, int, int*)
+      8    0.0%    0.0%  v8::internal::InnerPointerToCodeCache::GetCacheEntry(unsigned char*)
+      8    0.0%    0.0%  v8::internal::FixedArray::is_the_hole(v8::internal::Isolate*, int)
+      8    0.0%    0.0%  v8::internal::Accessors::ArrayLengthSetter(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<v8::Boolean> const&)
+      8    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)2> >::CopyElements(v8::internal::JSObject*, unsigned int, v8::internal::ElementsKind, v8::internal::Handle<v8::internal::FixedArrayBase>, unsigned int, int)
+      8    0.0%    0.0%  v8::base::TemplateHashMapEntry<void*, void*>* v8::base::TemplateHashMapImpl<void*, void*, v8::base::KeyEqualityMatcher<void*>, v8::base::DefaultAllocationPolicy>::LookupOrInsert<v8::base::TemplateHashMapImpl<void*, void*, v8::base::KeyEqualityMatcher<void*>, v8::base::DefaultAllocationPolicy>::LookupOrInsert(void* const&, unsigned int, v8::base::DefaultAllocationPolicy)::{lambda()#1}>(void* const&, unsigned int, v8::base::TemplateHashMapImpl<void*, void*, v8::base::KeyEqualityMatcher<void*>, v8::base::DefaultAllocationPolicy>::LookupOrInsert(void* const&, unsigned int, v8::base::DefaultAllocationPolicy)::{lambda()#1} const&, v8::base::DefaultAllocationPolicy) [clone .isra.621]
+      8    0.0%    0.0%  __lll_unlock_wake
+      7    0.0%    0.0%  v8::internal::NewSpace::AddFreshPage()
+      7    0.0%    0.0%  v8::internal::JSObject::DeepCopy(v8::internal::Handle<v8::internal::JSObject>, v8::internal::AllocationSiteUsageContext*, v8::internal::JSObject::DeepCopyHints)
+      7    0.0%    0.0%  v8::internal::FlexibleBodyVisitor<v8::internal::StaticScavengeVisitor, v8::internal::FlexibleBodyDescriptor<8>, int>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      7    0.0%    0.0%  v8::internal::Factory::ToBoolean(bool)
+      7    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)2> >::HasAccessors(v8::internal::JSObject*)
+      6    0.0%    0.0%  v8::internal::SemiSpace::FixPagesFlags(long, long)
+      6    0.0%    0.0%  v8::internal::Heap::InNewSpace(v8::internal::Object*) [clone .isra.410] [clone .part.411]
+      6    0.0%    0.0%  v8::internal::FastKeyAccumulator::GetKeysFast(v8::internal::GetKeysConversion)
+      6    0.0%    0.0%  v8::internal::Builtin_Impl_StringPrototypeStartsWith(v8::internal::BuiltinArguments, v8::internal::Isolate*)
+      6    0.0%    0.0%  double v8::internal::InternalStringToDouble<unsigned char const*, unsigned char const*>(v8::internal::UnicodeCache*, unsigned char const*, unsigned char const*, int, double)
+      5    0.0%    0.0%  v8::internal::StaticNewSpaceVisitor<v8::internal::StaticScavengeVisitor>::VisitFixedDoubleArray(v8::internal::Map*, v8::internal::HeapObject*)
+      5    0.0%    0.0%  v8::internal::StackFrameIteratorBase::StackFrameIteratorBase(v8::internal::Isolate*, bool)
+      5    0.0%    0.0%  v8::internal::ScopeInfo::ContextLength()
+      5    0.0%    0.0%  v8::internal::ScavengeVisitor::VisitPointer(v8::internal::Object**)
+      5    0.0%    0.0%  v8::internal::Runtime_SetGrow(int, v8::internal::Object**, v8::internal::Isolate*)
+      5    0.0%    0.0%  v8::internal::RuntimeProfiler::MaybeOptimizeFullCodegen(v8::internal::JSFunction*, v8::internal::JavaScriptFrame*, int)
+      5    0.0%    0.0%  v8::internal::JSReceiver::HasProperty(v8::internal::LookupIterator*)
+      5    0.0%    0.0%  v8::internal::FixStaleLeftTrimmedHandlesVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+      5    0.0%    0.0%  v8::internal::(anonymous namespace)::GetFastEnumPropertyKeys(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSObject>)
+      4    0.0%    0.0%  v8::internal::StringSearch<unsigned char, unsigned char>::InitialSearch(v8::internal::StringSearch<unsigned char, unsigned char>*, v8::internal::Vector<unsigned char const>, int)
+      4    0.0%    0.0%  v8::internal::StackGuard::HandleInterrupts()
+      4    0.0%    0.0%  v8::internal::RuntimeProfiler::MarkCandidatesForOptimization()
+      4    0.0%    0.0%  v8::internal::OrderedHashTableIterator<v8::internal::JSSetIterator, v8::internal::OrderedHashSet>::Transition()
+      4    0.0%    0.0%  v8::internal::OrderedHashTableIterator<v8::internal::JSSetIterator, v8::internal::OrderedHashSet>::HasMore()
+      4    0.0%    0.0%  v8::internal::JavaScriptFrame::function() const
+      4    0.0%    0.0%  v8::internal::InnerPointerToCodeCache::GcSafeFindCodeForInnerPointer(unsigned char*)
+      4    0.0%    0.0%  v8::internal::HeapObject::IterateBody(v8::internal::InstanceType, int, v8::internal::ObjectVisitor*)
+      4    0.0%    0.0%  v8::internal::Heap::ClearRecordedSlotRange(unsigned char*, unsigned char*)
+      4    0.0%    0.0%  v8::internal::FlexibleBodyVisitor<v8::internal::IncrementalMarkingMarkingVisitor, v8::internal::FlexibleBodyDescriptor<8>, void>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      4    0.0%    0.0%  v8::internal::FixedBodyVisitor<v8::internal::StaticScavengeVisitor, v8::internal::FixedBodyDescriptor<24, 40, 40>, int>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      4    0.0%    0.0%  v8::internal::FixedBodyVisitor<v8::internal::IncrementalMarkingMarkingVisitor, v8::internal::FixedBodyDescriptor<24, 40, 40>, void>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      4    0.0%    0.0%  v8::internal::FastKeyAccumulator::Prepare()
+      4    0.0%    0.0%  v8::internal::ArrayBufferTracker::FreeDeadInNewSpace(v8::internal::Heap*)
+      4    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedSmiElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)0> >::GrowCapacityAndConvertImpl(v8::internal::Handle<v8::internal::JSObject>, unsigned int)
+      4    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedSmiElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)0> >::GetEntryForIndex(v8::internal::Isolate*, v8::internal::JSObject*, v8::internal::FixedArrayBase*, unsigned int)
+      4    0.0%    0.0%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastPackedSmiElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)0> >::Add(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, unsigned int)
+      4    0.0%    0.0%  v8::base::bits::RoundUpToPowerOfTwo32(unsigned int)
+      4    0.0%    0.0%  int v8::internal::BinarySearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int*)
+      4    0.0%    0.0%  cfree
+      4    0.0%    0.0%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::PromoteObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      3    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<56>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      3    0.0%    0.0%  void node::Buffer::(anonymous namespace)::StringSlice<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.0%    0.0%  v8::internal::Strtod(v8::internal::Vector<char const>, int)
+      3    0.0%    0.0%  v8::internal::StaticMarkingVisitor<v8::internal::IncrementalMarkingMarkingVisitor>::VisitJSFunction(v8::internal::Map*, v8::internal::HeapObject*)
+      3    0.0%    0.0%  v8::internal::ScavengeVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+      3    0.0%    0.0%  v8::internal::Runtime_StoreCallbackProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.0%    0.0%  v8::internal::Runtime_AllocateInNewSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.0%    0.0%  v8::internal::RegExpKey::Hash()
+      3    0.0%    0.0%  v8::internal::OrderedHashTableIterator<v8::internal::JSSetIterator, v8::internal::OrderedHashSet>::Next(v8::internal::JSArray*)
+      3    0.0%    0.0%  v8::internal::OrderedHashTable<v8::internal::OrderedHashSet, v8::internal::JSSetIterator, 1>::EnsureGrowable(v8::internal::Handle<v8::internal::OrderedHashSet>)
+      3    0.0%    0.0%  v8::internal::IdleScavengeObserver::Step(int, unsigned char*, unsigned long)
+      3    0.0%    0.0%  v8::internal::Heap::GetFillToAlign(unsigned char*, v8::internal::AllocationAlignment)
+      3    0.0%    0.0%  v8::internal::Heap::GarbageCollectionPrologue()
+      3    0.0%    0.0%  v8::internal::GCTracer::Start(v8::internal::GarbageCollector, v8::internal::GarbageCollectionReason, char const*)
+      3    0.0%    0.0%  v8::internal::FixedArray::Shrink(int)
+      3    0.0%    0.0%  v8::internal::Factory::NewProperSubString(v8::internal::Handle<v8::internal::String>, int, int)
+      2    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<40>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      2    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::EvacuateObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      2    0.0%    0.0%  void node::StreamBase::JSMethod<node::StreamWrap, &(int node::StreamBase::WriteString<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&))>(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.0%    0.0%  v8::internal::Zone::~Zone()
+      2    0.0%    0.0%  v8::internal::V8::GetCurrentPlatform()
+      2    0.0%    0.0%  v8::internal::StaticMarkingVisitor<v8::internal::IncrementalMarkingMarkingVisitor>::VisitCode(v8::internal::Map*, v8::internal::HeapObject*)
+      2    0.0%    0.0%  v8::internal::StackFrameIterator::StackFrameIterator(v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Scavenger::SelectScavengingVisitorsTable()
+      2    0.0%    0.0%  v8::internal::Scanner::Next()
+      2    0.0%    0.0%  v8::internal::SafepointEntry::HasRegisters() const
+      2    0.0%    0.0%  v8::internal::Runtime_SetIteratorInitialize(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime_SetInitialize(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime_IsConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime::FunctionForName(unsigned char const*, int)
+      2    0.0%    0.0%  v8::internal::Relocatable::PostGarbageCollectionProcessing(v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::RegExpUtils::IsRegExp(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+      2    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*)
+      2    0.0%    0.0%  v8::internal::PagedSpace::RefillFreeList()
+      2    0.0%    0.0%  v8::internal::MarkCompactWeakObjectRetainer::RetainAs(v8::internal::Object*)
+      2    0.0%    0.0%  v8::internal::MarkCompactCollector::EvacuateNewSpaceVisitor::Visit(v8::internal::HeapObject*)
+      2    0.0%    0.0%  v8::internal::LChunk::MarkEmptyBlocks()
+      2    0.0%    0.0%  v8::internal::JSSet::Initialize(v8::internal::Handle<v8::internal::JSSet>, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Isolate::IsIsConcatSpreadableLookupChainIntact()
+      2    0.0%    0.0%  v8::internal::Heap::SizeOfObjects()
+      2    0.0%    0.0%  v8::internal::GCTracer::Scope::~Scope()
+      2    0.0%    0.0%  v8::internal::FreeList::SearchForNodeInList(v8::internal::FreeListCategoryType, unsigned long*, unsigned long)
+      2    0.0%    0.0%  v8::internal::CancelableTaskManager::Register(v8::internal::Cancelable*)
+      2    0.0%    0.0%  v8::internal::Builtin_Impl_ArraySlice(v8::internal::BuiltinArguments, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::AstValueFactory::GetString(unsigned int, bool, v8::internal::Vector<unsigned char const>)
+      2    0.0%    0.0%  v8::internal::AllocationObserver::GetNextStepSize()
+      2    0.0%    0.0%  v8::internal::(anonymous namespace)::CompileUnoptimizedInnerFunctions(v8::internal::ThreadedList<v8::internal::ThreadedListZoneEntry<v8::internal::FunctionLiteral*> >*, v8::internal::Compiler::ConcurrencyMode, std::shared_ptr<v8::internal::Zone>, v8::internal::CompilationInfo*)
+      2    0.0%    0.0%  syscall
+      2    0.0%    0.0%  operator new(unsigned long)
+      2    0.0%    0.0%  node::Binding(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.0%    0.0%  do_futex_wait.constprop.3
+      2    0.0%    0.0%  __lll_lock_wait
+      1    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<32>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<40>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  void v8::internal::BodyDescriptorBase::IteratePointers<v8::internal::RecordMigratedSlotVisitor>(v8::internal::HeapObject*, int, int, v8::internal::RecordMigratedSlotVisitor*) [clone .isra.516]
+      1    0.0%    0.0%  void std::__introsort_loop<std::_Deque_iterator<v8::internal::Page*, v8::internal::Page*&, v8::internal::Page**>, long, v8::internal::MarkCompactCollector::Sweeper::StartSweeping()::{lambda(v8::internal::AllocationSpace)#1}::operator()(v8::internal::AllocationSpace) const::{lambda(v8::internal::Page*, v8::internal::Page*)#1}>(std::_Deque_iterator<v8::internal::Page*, v8::internal::Page*&, v8::internal::Page**>, {lambda(v8::internal::Page*, v8::internal::Page*)#1}, long, v8::internal::MarkCompactCollector::Sweeper::StartSweeping()::{lambda(v8::internal::AllocationSpace)#1}::operator()(v8::internal::AllocationSpace) const::{lambda(v8::internal::Page*, v8::internal::Page*)#1}) [clone .isra.514]
+      1    0.0%    0.0%  v8::platform::DefaultPlatform::CallOnBackgroundThread(v8::Task*, v8::Platform::ExpectedRuntime)
+      1    0.0%    0.0%  v8::internal::interpreter::Bytecodes::ToString(v8::internal::interpreter::Bytecode, v8::internal::interpreter::OperandScale)
+      1    0.0%    0.0%  v8::internal::interpreter::BytecodeGenerator::GenerateBytecode(unsigned long)
+      1    0.0%    0.0%  v8::internal::compiler::SourcePositionTable::Decorator::Decorate(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  v8::internal::compiler::JSContextSpecialization::ReduceJSLoadContext(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  v8::internal::TypeFeedbackOracle::CompareType(v8::internal::TypeFeedbackId, v8::internal::FeedbackSlot, v8::internal::AstType**, v8::internal::AstType**, v8::internal::AstType**)
+      1    0.0%    0.0%  v8::internal::TypeFeedbackOracle::CallIsUninitialized(v8::internal::FeedbackSlot)
+      1    0.0%    0.0%  v8::internal::TransitionArray::NumberOfTransitions(v8::internal::Object*)
+      1    0.0%    0.0%  v8::internal::StubCache::Set(v8::internal::Name*, v8::internal::Map*, v8::internal::Object*)
+      1    0.0%    0.0%  v8::internal::StubCache::Clear()
+      1    0.0%    0.0%  v8::internal::StringToDouble(v8::internal::UnicodeCache*, v8::internal::Handle<v8::internal::String>, int, double)
+      1    0.0%    0.0%  v8::internal::StringTable::LookupTwoCharsStringIfExists(v8::internal::Isolate*, unsigned short, unsigned short)
+      1    0.0%    0.0%  v8::internal::StringTable::LookupKey(v8::internal::Isolate*, v8::internal::HashTableKey*)
+      1    0.0%    0.0%  v8::internal::StoreBuffer::StoreBufferOverflow(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::StoreBuffer::MoveAllEntriesToRememberedSet()
+      1    0.0%    0.0%  v8::internal::StaticMarkingVisitor<v8::internal::IncrementalMarkingMarkingVisitor>::VisitSharedFunctionInfo(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::StandardFrame::IterateCompiledFrame(v8::internal::ObjectVisitor*) const
+      1    0.0%    0.0%  v8::internal::SourcePositionTableBuilder::AddPosition(unsigned long, v8::internal::SourcePosition, bool)
+      1    0.0%    0.0%  v8::internal::SourcePositionTableBuilder::AddEntry(v8::internal::PositionTableEntry const&)
+      1    0.0%    0.0%  v8::internal::SlotSet::Insert(int)
+      1    0.0%    0.0%  v8::internal::SerializerDeserializer::Iterate(v8::internal::Isolate*, v8::internal::ObjectVisitor*)
+      1    0.0%    0.0%  v8::internal::SemiSpace::set_age_mark(unsigned char*)
+      1    0.0%    0.0%  v8::internal::ScopeInfo::function_kind()
+      1    0.0%    0.0%  v8::internal::Scope::AllocateNonParameterLocal(v8::internal::Variable*)
+      1    0.0%    0.0%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::Visit(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::EvacuateShortcutCandidate(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::ScavengeJob::ScheduleIdleTaskIfNeeded(v8::internal::Heap*, int)
+      1    0.0%    0.0%  v8::internal::Scanner::Scan()
+      1    0.0%    0.0%  v8::internal::Scanner::PeekAhead()
+      1    0.0%    0.0%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_StringBuilderJoin(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::RegExpMacroAssemblerX64::GetCode(v8::internal::Handle<v8::internal::String>)
+      1    0.0%    0.0%  v8::internal::PointersUpdatingVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseUnaryExpression(bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseStatementList(v8::internal::ZoneList<v8::internal::Statement*>*, int, bool, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParsePrimaryExpression(bool*, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpressionContinuation(v8::internal::Expression*, bool*, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionOrLabelledStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::ParseBinaryExpression(int, bool, bool*)
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::Parser>::BindingPatternUnexpectedToken()
+      1    0.0%    0.0%  v8::internal::Parser::ShortcutNumericLiteralBinaryExpression(v8::internal::Expression**, v8::internal::Expression*, v8::internal::Token::Value, int)
+      1    0.0%    0.0%  v8::internal::Parser::ParseFunctionLiteral(v8::internal::AstRawString const*, v8::internal::Scanner::Location, v8::internal::FunctionNameValidity, v8::internal::FunctionKind, int, v8::internal::FunctionLiteral::FunctionType, v8::internal::LanguageMode, bool*)
+      1    0.0%    0.0%  v8::internal::PagedSpace::SizeOfObjects()
+      1    0.0%    0.0%  v8::internal::PagedSpace::SetAllocationInfo(unsigned char*, unsigned char*)
+      1    0.0%    0.0%  v8::internal::PagedSpace::ResetFreeListStatistics()
+      1    0.0%    0.0%  v8::internal::PagedSpace::Expand()
+      1    0.0%    0.0%  v8::internal::PagedSpace::EmptyAllocationInfo()
+      1    0.0%    0.0%  v8::internal::PagedSpace::CountTotalPages()
+      1    0.0%    0.0%  v8::internal::PageParallelJob<v8::internal::ToSpacePointerUpdateJobTraits>::Task::RunInternal()
+      1    0.0%    0.0%  v8::internal::PageParallelJob<v8::internal::EvacuationJobTraits>::Task::RunInternal()
+      1    0.0%    0.0%  v8::internal::OrderedHashTable<v8::internal::OrderedHashSet, v8::internal::JSSetIterator, 1>::Allocate(v8::internal::Isolate*, int, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  v8::internal::OptimizedFrame::type() const
+      1    0.0%    0.0%  v8::internal::Object* v8::internal::VisitWeakList<v8::internal::Context>(v8::internal::Heap*, v8::internal::Object*, v8::internal::WeakObjectRetainer*)
+      1    0.0%    0.0%  v8::internal::NewSpace::EnsureAllocation(int, v8::internal::AllocationAlignment)
+      1    0.0%    0.0%  v8::internal::MemoryChunkIterator::MemoryChunkIterator(v8::internal::Heap*)
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::Sweeper::GetSweptPageSafe(v8::internal::PagedSpace*)
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::Sweeper::EnsureNewSpaceCompleted()
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::CollectEvacuationCandidates(v8::internal::PagedSpace*)
+      1    0.0%    0.0%  v8::internal::Map::GeneralizeField(v8::internal::Handle<v8::internal::Map>, int, v8::internal::PropertyConstness, v8::internal::Representation, v8::internal::Handle<v8::internal::FieldType>)
+      1    0.0%    0.0%  v8::internal::Malloced::Delete(void*)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::InvokePrologue(v8::internal::ParameterCount const&, v8::internal::ParameterCount const&, v8::internal::Label*, bool*, InvokeFlag, v8::internal::Label::Distance, v8::internal::CallWrapper const&)
+      1    0.0%    0.0%  v8::internal::LookupIterator::PrepareForDataProperty(v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::LookupIterator::LookupIterator(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+      1    0.0%    0.0%  v8::internal::LookupIterator::IsCacheableTransition()
+      1    0.0%    0.0%  v8::internal::Logger::ResourceEvent(char const*, char const*)
+      1    0.0%    0.0%  v8::internal::Logger::CodeCreateEvent(v8::internal::CodeEventListener::LogEventsAndTags, v8::internal::AbstractCode*, v8::internal::SharedFunctionInfo*, v8::internal::Name*, int, int)
+      1    0.0%    0.0%  v8::internal::LiveRange::AddUseInterval(v8::internal::LifetimePosition, v8::internal::LifetimePosition, v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::LiveObjectIterator<(v8::internal::LiveObjectIterationMode)0>::Next()
+      1    0.0%    0.0%  v8::internal::LargeObjectSpace::SizeOfObjects()
+      1    0.0%    0.0%  v8::internal::LargeObjectSpace::FindPageThreadSafe(unsigned char*)
+      1    0.0%    0.0%  v8::internal::LGapResolver::Resolve(v8::internal::LParallelMove*)
+      1    0.0%    0.0%  v8::internal::LGapResolver::BuildInitialMoveList(v8::internal::LParallelMove*)
+      1    0.0%    0.0%  v8::internal::LCodeGenBase::GenerateBody()
+      1    0.0%    0.0%  v8::internal::LCodeGenBase::DefineDeoptimizationLiteral(v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::LCodeGen::DoInstructionGap(v8::internal::LInstructionGap*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::DeoptimizeIf(v8::internal::Condition, v8::internal::LInstruction*, v8::internal::DeoptimizeReason, v8::internal::Deoptimizer::BailoutType)
+      1    0.0%    0.0%  v8::internal::JsonParser<true>::ParseJsonNumber()
+      1    0.0%    0.0%  v8::internal::JavaScriptFrame::Iterate(v8::internal::ObjectVisitor*) const
+      1    0.0%    0.0%  v8::internal::JSObject::PrepareElementsForSort(v8::internal::Handle<v8::internal::JSObject>, unsigned int)
+      1    0.0%    0.0%  v8::internal::JSObject::LazyRegisterPrototypeUser(v8::internal::Handle<v8::internal::Map>, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Isolate::NeedsSourcePositionsForProfiling() const
+      1    0.0%    0.0%  v8::internal::IncrementalMarking::UpdateMarkingDequeAfterScavenge()
+      1    0.0%    0.0%  v8::internal::IncrementalMarking::RecordWriteSlow(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Object*)
+      1    0.0%    0.0%  v8::internal::IncrementalMarking::ProcessWeakCells()
+      1    0.0%    0.0%  v8::internal::IncrementalMarking::Observer::Step(int, unsigned char*, unsigned long)
+      1    0.0%    0.0%  v8::internal::HeapIterator::next()
+      1    0.0%    0.0%  v8::internal::Heap::AllocateWeakCell(v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::Heap::AllocateFillerObject(int, bool, v8::internal::AllocationSpace)
+      1    0.0%    0.0%  v8::internal::HashTable<v8::internal::UnseededNumberDictionary, v8::internal::UnseededNumberDictionaryShape, unsigned int>::FindEntry(v8::internal::Isolate*, unsigned int)
+      1    0.0%    0.0%  v8::internal::HandleScopeImplementer::IterateThis(v8::internal::ObjectVisitor*)
+      1    0.0%    0.0%  v8::internal::HandleScope::~HandleScope()
+      1    0.0%    0.0%  v8::internal::Handle<v8::internal::String> v8::internal::JsonParser<true>::ScanJsonString<false>()
+      1    0.0%    0.0%  v8::internal::HValue::SetBlock(v8::internal::HBasicBlock*)
+      1    0.0%    0.0%  v8::internal::HGraphBuilder::AddElementAccess(v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::ElementsKind, v8::internal::PropertyAccessType, v8::internal::LoadKeyedHoleMode) [clone .part.801]
+      1    0.0%    0.0%  v8::internal::HGraphBuilder::AddElementAccess(v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::ElementsKind, v8::internal::PropertyAccessType, v8::internal::LoadKeyedHoleMode)
+      1    0.0%    0.0%  v8::internal::HEnvironment::Initialize(v8::internal::HEnvironment const*)
+      1    0.0%    0.0%  v8::internal::HConstant::InferRange(v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::HBoundsCheckEliminationPhase::EliminateRedundantBoundsChecks(v8::internal::HBasicBlock*)
+      1    0.0%    0.0%  v8::internal::GCTracer::Stop(v8::internal::GarbageCollector)
+      1    0.0%    0.0%  v8::internal::GCTracer::Output(char const*, ...) const
+      1    0.0%    0.0%  v8::internal::GCTracer::AddSurvivalRatio(double)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::AccumulatorValueContext::Plug(v8::internal::Handle<v8::internal::Object>) const
+      1    0.0%    0.0%  v8::internal::FreeListCategory::Free(v8::internal::FreeSpace*, unsigned long, v8::internal::FreeMode)
+      1    0.0%    0.0%  v8::internal::FreeList::FindNodeIn(v8::internal::FreeListCategoryType, unsigned long*)
+      1    0.0%    0.0%  v8::internal::FixedArray::set(int, v8::internal::Object*) [clone .constprop.868]
+      1    0.0%    0.0%  v8::internal::FeedbackMetadata::SpecDiffersFrom(v8::internal::FeedbackVectorSpec const*) const
+      1    0.0%    0.0%  v8::internal::FastKeyAccumulator::GetKeys(v8::internal::GetKeysConversion)
+      1    0.0%    0.0%  v8::internal::Factory::TryNewFixedArray(int, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationSpace)
+      1    0.0%    0.0%  v8::internal::Factory::CopyFixedArrayUpTo(v8::internal::Handle<v8::internal::FixedArray>, int, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  v8::internal::Execution::Call(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*)
+      1    0.0%    0.0%  v8::internal::EternalHandles::PostGarbageCollectionProcessing(v8::internal::Heap*)
+      1    0.0%    0.0%  v8::internal::Deserializer::ReadData(v8::internal::Object**, v8::internal::Object**, int, unsigned char*)
+      1    0.0%    0.0%  v8::internal::DescriptorArray::Replace(int, v8::internal::Descriptor*)
+      1    0.0%    0.0%  v8::internal::DescriptorArray::Append(v8::internal::Descriptor*)
+      1    0.0%    0.0%  v8::internal::DependentCode::EnsureSpace(v8::internal::Handle<v8::internal::DependentCode>)
+      1    0.0%    0.0%  v8::internal::ComputeReceiverTypes(v8::internal::Expression*, v8::internal::HValue*, v8::internal::SmallMapList**, v8::internal::HOptimizedGraphBuilder*)
+      1    0.0%    0.0%  v8::internal::CompilationCacheTable::Age()
+      1    0.0%    0.0%  v8::internal::Builtins::MakeQuadragenarianCodeYoungAgain()
+      1    0.0%    0.0%  v8::internal::Builtins::InterpreterEntryTrampoline()
+      1    0.0%    0.0%  v8::internal::Builtin_ArraySlice(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Bootstrapper::Iterate(v8::internal::ObjectVisitor*)
+      1    0.0%    0.0%  v8::internal::AstTyper::VisitCall(v8::internal::Call*)
+      1    0.0%    0.0%  v8::internal::Assembler::movp(v8::internal::Register, void*, v8::internal::RelocInfo::Mode)
+      1    0.0%    0.0%  v8::internal::Assembler::db(unsigned char)
+      1    0.0%    0.0%  v8::internal::Assembler::arithmetic_op(unsigned char, v8::internal::Register, v8::internal::Operand const&, int)
+      1    0.0%    0.0%  v8::internal::AddFunctionAndCode(v8::internal::SharedFunctionInfo*, v8::internal::AbstractCode*, v8::internal::Handle<v8::internal::SharedFunctionInfo>*, v8::internal::Handle<v8::internal::AbstractCode>*, int)
+      1    0.0%    0.0%  v8::internal::Accessors::ReconfigureToDataProperty(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<v8::Boolean> const&)
+      1    0.0%    0.0%  v8::internal::Accessors::FunctionPrototypeGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  v8::internal::(anonymous namespace)::RecordFunctionCompilation(v8::internal::CodeEventListener::LogEventsAndTags, v8::internal::CompilationInfo*)
+      1    0.0%    0.0%  v8::internal::(anonymous namespace)::GetSimpleHash(v8::internal::Object*)
+      1    0.0%    0.0%  v8::base::TimeTicks::HighResolutionNow()
+      1    0.0%    0.0%  v8::base::RecursiveMutex::Unlock()
+      1    0.0%    0.0%  v8::base::OS::VSNPrintF(char*, int, char const*, __va_list_tag*)
+      1    0.0%    0.0%  v8::base::OS::AllocateAlignment()
+      1    0.0%    0.0%  sysconf
+      1    0.0%    0.0%  std::_Deque_base<v8::internal::Map*, v8::internal::zone_allocator<v8::internal::Map*> >::_M_initialize_map(unsigned long)
+      1    0.0%    0.0%  node::TTYWrap::New(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  node::Buffer::(anonymous namespace)::SetupBufferJS(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  node::Buffer::(anonymous namespace)::CreateFromString(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  int v8::internal::StaticNewSpaceVisitor<v8::internal::StaticScavengeVisitor>::DataObjectVisitor::VisitSpecialized<16>(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  int v8::internal::FlexibleBodyVisitor<v8::internal::StaticScavengeVisitor, v8::internal::FlexibleBodyDescriptor<8>, int>::VisitSpecialized<64>(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  fwrite
+      1    0.0%    0.0%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      1    0.0%    0.0%  __cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+      1    0.0%    0.0%  __clock_gettime
+
+ [Summary]:
+   ticks  total  nonlib   name
+  22132   40.6%   41.2%  JavaScript
+  26262   48.2%   48.9%  C++
+   4321    7.9%    8.0%  GC
+    777    1.4%          Shared libraries
+   5358    9.8%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+  10094   45.1%   18.5%  v8::internal::Runtime_CreateDataProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+   2652   11.9%    4.9%  v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+   1567    7.0%    2.9%  v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+    999    4.5%    1.8%  v8::internal::Runtime_NewClosure(int, v8::internal::Object**, v8::internal::Isolate*)
+    978    4.4%    1.8%  v8::internal::Runtime_KeyedGetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    600    2.7%    1.1%  v8::internal::Runtime_StringToArray(int, v8::internal::Object**, v8::internal::Isolate*)
+    552    2.5%    1.0%  v8::internal::Runtime_AllocateInNewSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+    542    2.4%    1.0%  v8::internal::Runtime_RegExpInitializeAndCompile(int, v8::internal::Object**, v8::internal::Isolate*)
+    440    2.0%    0.8%  v8::internal::Runtime_RegExpExec(int, v8::internal::Object**, v8::internal::Isolate*)
+    372    1.7%    0.7%  v8::internal::Runtime_HasProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    354    1.6%    0.6%  v8::internal::Runtime_AllocateHeapNumber(int, v8::internal::Object**, v8::internal::Isolate*)
+    345    1.5%    0.6%  v8::internal::Builtin_ObjectKeys(int, v8::internal::Object**, v8::internal::Isolate*)
+    340    1.5%    0.6%  v8::internal::Runtime_StringToUpperCaseI18N(int, v8::internal::Object**, v8::internal::Isolate*)
+    322    1.4%    0.6%  v8::internal::Builtin_ArrayShift(int, v8::internal::Object**, v8::internal::Isolate*)
+    267    1.2%    0.5%  v8::internal::Builtin_ArrayPop(int, v8::internal::Object**, v8::internal::Isolate*)
+    237    1.1%    0.4%  v8::internal::Runtime_ArraySpeciesConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+    235    1.1%    0.4%  v8::internal::Runtime_Compare(int, v8::internal::Object**, v8::internal::Isolate*)
+    207    0.9%    0.4%  v8::internal::Runtime_PushBlockContext(int, v8::internal::Object**, v8::internal::Isolate*)
+    165    0.7%    0.3%  v8::internal::Runtime_StringToLowerCaseI18N(int, v8::internal::Object**, v8::internal::Isolate*)
+    151    0.7%    0.3%  v8::internal::Runtime_AllocateInTargetSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+    144    0.6%    0.3%  v8::internal::Builtin_ArrayConcat(int, v8::internal::Object**, v8::internal::Isolate*)
+    121    0.5%    0.2%  v8::internal::Builtin_StringPrototypeIncludes(int, v8::internal::Object**, v8::internal::Isolate*)
+    106    0.5%    0.2%  v8::internal::Runtime_ForInEnumerate(int, v8::internal::Object**, v8::internal::Isolate*)
+    106    0.5%    0.2%  memchr
+     65    0.3%    0.1%  v8::internal::Runtime_Interrupt(int, v8::internal::Object**, v8::internal::Isolate*)
+     54    0.2%    0.1%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+     45    0.2%    0.1%  v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+     39    0.2%    0.1%  v8::internal::Runtime_SetGrow(int, v8::internal::Object**, v8::internal::Isolate*)
+     37    0.2%    0.1%  v8::internal::Runtime_StringBuilderConcat(int, v8::internal::Object**, v8::internal::Isolate*)
+     26    0.1%    0.0%  v8::internal::Runtime_CompileOptimized_Concurrent(int, v8::internal::Object**, v8::internal::Isolate*)
+     21    0.1%    0.0%  v8::internal::Runtime_SetIteratorNext(int, v8::internal::Object**, v8::internal::Isolate*)
+     21    0.1%    0.0%  v8::internal::Factory::NewBlockContext(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::Handle<v8::internal::Context>, v8::internal::Handle<v8::internal::ScopeInfo>)
+     17    0.1%    0.0%  v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+     16    0.1%    0.0%  v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+     11    0.0%    0.0%  v8::internal::Runtime_StringParseFloat(int, v8::internal::Object**, v8::internal::Isolate*)
+     11    0.0%    0.0%  v8::internal::Runtime_StoreCallbackProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     11    0.0%    0.0%  v8::internal::Runtime_SetInitialize(int, v8::internal::Object**, v8::internal::Isolate*)
+     10    0.0%    0.0%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+     10    0.0%    0.0%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     10    0.0%    0.0%  v8::internal::Builtin_StringPrototypeStartsWith(int, v8::internal::Object**, v8::internal::Isolate*)
+      8    0.0%    0.0%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  v8::internal::Object::ArraySpeciesConstructor(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+      5    0.0%    0.0%  v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+      5    0.0%    0.0%  v8::internal::Builtin_ArraySlice(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.0%    0.0%  v8::internal::Heap::AllocateFixedArray(int, v8::internal::PretenureFlag)
+      3    0.0%    0.0%  v8::internal::Runtime_TryInstallOptimizedCode(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.0%    0.0%  v8::internal::JSReceiver::CreateDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::Object::ShouldThrow)
+      2    0.0%    0.0%  void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+      2    0.0%    0.0%  v8::internal::String::Flatten(v8::internal::Handle<v8::internal::String>, v8::internal::PretenureFlag)
+      2    0.0%    0.0%  v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime_SetIteratorInitialize(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime_IsConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime_CompileForOnStackReplacement(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Runtime_BinaryOpIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  v8::internal::Heap::Allocate(v8::internal::Map*, v8::internal::AllocationSpace, v8::internal::AllocationSite*)
+      2    0.0%    0.0%  v8::internal::Factory::NewRawOneByteString(int, v8::internal::PretenureFlag)
+      2    0.0%    0.0%  v8::internal::(anonymous namespace)::ConvertToLower(v8::internal::Handle<v8::internal::String>, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_ToString(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_StringBuilderJoin(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_RemoveArrayHoles(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_NumberToString(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_NotifyDeoptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_NewObject(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_LoadGlobalIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_DefineDataPropertyInLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_CompareIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Object::AddDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::ShouldThrow, v8::internal::Object::StoreFromKeyed)
+      1    0.0%    0.0%  v8::internal::Factory::NewFunction(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Object>, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  v8::internal::EscapeRegExpSource(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+      1    0.0%    0.0%  v8::internal::Context::AddOptimizedFunction(v8::internal::JSFunction*)
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+   5358    9.8%  UNKNOWN
+    115    2.1%    LazyCompile: *InnerArrayFilter native array.js:755:26
+    115  100.0%      LazyCompile: *filter native array.js:768:21
+    115  100.0%        Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+    115  100.0%          Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+    115  100.0%            LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+
+   3159    5.8%  LazyCompile: *map native array.js:832:18
+   1391   44.0%    LazyCompile: *calculateIons /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:116:17
+   1390   99.9%      LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+   1390  100.0%        LazyCompile: *InnerArrayForEach native array.js:776:27
+   1390  100.0%          LazyCompile: *forEach native array.js:794:22
+   1390  100.0%            Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+   1162   36.8%    LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+   1162  100.0%      LazyCompile: *InnerArrayForEach native array.js:776:27
+   1162  100.0%        LazyCompile: *forEach native array.js:794:22
+   1162  100.0%          LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+   1162  100.0%            LazyCompile: *InnerArrayForEach native array.js:776:27
+    514   16.3%    Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+    514  100.0%      Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+    447   87.0%        LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+    447  100.0%          Function: ~map native array.js:832:18
+    447  100.0%            Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+     67   13.0%        Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     67  100.0%          Function: ~map native array.js:832:18
+     67  100.0%            Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+     76    2.4%    LazyCompile: *addPeptide /home/mike/github/bootleg/bootleg.js:140:13
+     76  100.0%      Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+     69   90.8%        LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     69  100.0%          Function: ~map native array.js:832:18
+     69  100.0%            Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+      7    9.2%        Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+      7  100.0%          Function: ~map native array.js:832:18
+      7  100.0%            Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+
+   2654    4.9%  Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+   2654  100.0%    Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+   2361   89.0%      LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+   2361  100.0%        Function: ~map native array.js:832:18
+   2361  100.0%          Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+   2361  100.0%            Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+    293   11.0%      Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+    293  100.0%        Function: ~map native array.js:832:18
+    293  100.0%          Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+    293  100.0%            Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+
+   2612    4.8%  LazyCompile: *<anonymous> /home/mike/github/bootleg/bootleg.js:60:29
+   2348   89.9%    LazyCompile: *QuickSort native array.js:574:19
+   2013   85.7%      LazyCompile: *QuickSort native array.js:574:19
+   1642   81.6%        LazyCompile: *QuickSort native array.js:574:19
+   1230   74.9%          LazyCompile: *QuickSort native array.js:574:19
+    834   67.8%            LazyCompile: *QuickSort native array.js:574:19
+    291   23.7%            LazyCompile: *InnerArraySort native array.js:530:24
+    105    8.5%            Function: ~QuickSort native array.js:574:19
+    294   17.9%          LazyCompile: *InnerArraySort native array.js:530:24
+    294  100.0%            Function: ~sort native array.js:749:19
+    118    7.2%          Function: ~QuickSort native array.js:574:19
+     65   55.1%            Function: ~InnerArraySort native array.js:530:24
+     53   44.9%            Function: ~QuickSort native array.js:574:19
+    243   12.1%        LazyCompile: *InnerArraySort native array.js:530:24
+    243  100.0%          Function: ~sort native array.js:749:19
+    243  100.0%            Function: ~sortByKey /home/mike/github/bootleg/bootleg.js:59:19
+    128    6.4%        Function: ~QuickSort native array.js:574:19
+     67   52.3%          Function: ~InnerArraySort native array.js:530:24
+     67  100.0%            Function: ~sort native array.js:749:19
+     61   47.7%          Function: ~QuickSort native array.js:574:19
+     31   50.8%            Function: ~QuickSort native array.js:574:19
+     30   49.2%            Function: ~InnerArraySort native array.js:530:24
+    190    8.1%      LazyCompile: *InnerArraySort native array.js:530:24
+    190  100.0%        Function: ~sort native array.js:749:19
+    190  100.0%          Function: ~sortByKey /home/mike/github/bootleg/bootleg.js:59:19
+    190  100.0%            Function: ~sortPeptides /home/mike/github/bootleg/bootleg.js:158:15
+    145    6.2%      Function: ~QuickSort native array.js:574:19
+     79   54.5%        Function: ~InnerArraySort native array.js:530:24
+     79  100.0%          Function: ~sort native array.js:749:19
+     79  100.0%            Function: ~sortByKey /home/mike/github/bootleg/bootleg.js:59:19
+     66   45.5%        Function: ~QuickSort native array.js:574:19
+     40   60.6%          Function: ~InnerArraySort native array.js:530:24
+     40  100.0%            Function: ~sort native array.js:749:19
+     26   39.4%          Function: ~QuickSort native array.js:574:19
+     26  100.0%            Function: ~InnerArraySort native array.js:530:24
+    213    8.2%    Function: ~QuickSort native array.js:574:19
+    129   60.6%      Function: ~InnerArraySort native array.js:530:24
+    129  100.0%        Function: ~sort native array.js:749:19
+    129  100.0%          Function: ~sortByKey /home/mike/github/bootleg/bootleg.js:59:19
+    129  100.0%            Function: ~sortPeptides /home/mike/github/bootleg/bootleg.js:158:15
+     84   39.4%      Function: ~QuickSort native array.js:574:19
+     53   63.1%        Function: ~InnerArraySort native array.js:530:24
+     53  100.0%          Function: ~sort native array.js:749:19
+     53  100.0%            Function: ~sortByKey /home/mike/github/bootleg/bootleg.js:59:19
+     31   36.9%        Function: ~QuickSort native array.js:574:19
+     31  100.0%          Function: ~InnerArraySort native array.js:530:24
+     31  100.0%            Function: ~sort native array.js:749:19
+
+   2133    3.9%  v8::internal::JSObject::AddDataElement(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::ShouldThrow)
+   2056   96.4%    v8::internal::Runtime_CreateDataProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+   2041   99.3%      LazyCompile: *map native array.js:832:18
+    838   41.1%        LazyCompile: *calculateIons /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:116:17
+    838  100.0%          LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+    838  100.0%            LazyCompile: *InnerArrayForEach native array.js:776:27
+    756   37.0%        LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+    756  100.0%          LazyCompile: *InnerArrayForEach native array.js:776:27
+    756  100.0%            LazyCompile: *forEach native array.js:794:22
+    419   20.5%        Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+    419  100.0%          Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+    362   86.4%            LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     57   13.6%            Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     77    3.6%    v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     69   89.6%      LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+     69  100.0%        LazyCompile: *InnerArrayForEach native array.js:776:27
+     69  100.0%          LazyCompile: *forEach native array.js:794:22
+     69  100.0%            LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+      7    9.1%      Function: ~<anonymous> module.js:1:11
+      7  100.0%        Function: ~runCascade /home/mike/github/bootleg/bootleg.js:327:20
+      7  100.0%          Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+      7  100.0%            Function: ~<anonymous> /home/mike/github/bootleg/main.js:40:40
+
+   1691    3.1%  v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyDoubleElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)5> >::Add(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, unsigned int)
+   1691  100.0%    v8::internal::Runtime_CreateDataProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+   1691  100.0%      LazyCompile: *map native array.js:832:18
+    808   47.8%        LazyCompile: *calculateIons /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:116:17
+    807   99.9%          LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+    807  100.0%            LazyCompile: *InnerArrayForEach native array.js:776:27
+    806   47.7%        LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+    806  100.0%          LazyCompile: *InnerArrayForEach native array.js:776:27
+    806  100.0%            LazyCompile: *forEach native array.js:794:22
+     68    4.0%        Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+     68  100.0%          Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+     62   91.2%            LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+      6    8.8%            Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+
+   1431    2.6%  LazyCompile: *module.exports.modify /home/mike/github/bootleg/node_modules/peptide-modifier/index.js:4:33
+   1431  100.0%    Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+   1267   88.5%      LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+   1267  100.0%        Function: ~map native array.js:832:18
+   1267  100.0%          Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+   1267  100.0%            Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+    164   11.5%      Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+    164  100.0%        Function: ~map native array.js:832:18
+    164  100.0%          Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+    164  100.0%            Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+
+   1431    2.6%  Function: ~calculateMass /home/mike/github/bootleg/bootleg.js:9:23
+   1431  100.0%    Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+   1255   87.7%      LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+   1255  100.0%        Function: ~map native array.js:832:18
+   1255  100.0%          Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+   1255  100.0%            Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+    176   12.3%      Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+    176  100.0%        Function: ~map native array.js:832:18
+    176  100.0%          Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+    176  100.0%            Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+
+   1241    2.3%  LazyCompile: *ions.map /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:106:35
+   1241  100.0%    LazyCompile: *map native array.js:832:18
+   1233   99.4%      LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+   1233  100.0%        LazyCompile: *InnerArrayForEach native array.js:776:27
+   1233  100.0%          LazyCompile: *forEach native array.js:794:22
+   1233  100.0%            LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+
+   1220    2.2%  Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+   1096   89.8%    LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+   1096  100.0%      Function: ~map native array.js:832:18
+   1096  100.0%        Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+   1096  100.0%          Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+   1096  100.0%            Function: ~<anonymous> /home/mike/github/bootleg/main.js:40:40
+    124   10.2%    Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+    124  100.0%      Function: ~map native array.js:832:18
+    124  100.0%        Function: ~parseFasta /home/mike/github/bootleg/bootleg.js:222:20
+    124  100.0%          Function: ~module.exports.search /home/mike/github/bootleg/bootleg.js:428:25
+    124  100.0%            Function: ~<anonymous> /home/mike/github/bootleg/main.js:40:40
+
+   1163    2.1%  v8::internal::Runtime_CreateDataProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    971   83.5%    v8::internal::Runtime_CreateDataProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    961   99.0%      LazyCompile: *map native array.js:832:18
+    373   38.8%        LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+    373  100.0%          LazyCompile: *InnerArrayForEach native array.js:776:27
+    373  100.0%            LazyCompile: *forEach native array.js:794:22
+    369   38.4%        LazyCompile: *calculateIons /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:116:17
+    369  100.0%          LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+    369  100.0%            LazyCompile: *InnerArrayForEach native array.js:776:27
+    208   21.6%        Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+    208  100.0%          Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+    189   90.9%            LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     19    9.1%            Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+    180   15.5%    LazyCompile: *map native array.js:832:18
+     72   40.0%      LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:105:38
+     72  100.0%        LazyCompile: *InnerArrayForEach native array.js:776:27
+     72  100.0%          LazyCompile: *forEach native array.js:794:22
+     72  100.0%            LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+     63   35.0%      LazyCompile: *calculateIons /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:116:17
+     63  100.0%        LazyCompile: *<anonymous> /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:80:29
+     63  100.0%          LazyCompile: *InnerArrayForEach native array.js:776:27
+     63  100.0%            LazyCompile: *forEach native array.js:794:22
+     44   24.4%      Function: ~module.exports.fragment /home/mike/github/bootleg/node_modules/peptide-fragmenter/index.js:38:35
+     44  100.0%        Function: ~processPeptides /home/mike/github/bootleg/bootleg.js:190:25
+     41   93.2%          LazyCompile: *sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+     41  100.0%            Function: ~map native array.js:832:18
+      3    6.8%          Function: ~sequenceDB.map /home/mike/github/bootleg/bootleg.js:237:18
+      3  100.0%            Function: ~map native array.js:832:18
+

@@ -24,8 +24,9 @@
     "js-mgf": "^1.1.0",
     "minimist": "^1.2.0",
     "peptide-cutter": "^2.0.0",
-    "peptide-fragmenter": "^1.0.1",
-    "peptide-modifier": "^1.0.2"
+    "peptide-fragmenter": "^1.0.2",
+    "peptide-modifier": "^1.0.2",
+    "sync-mysql": "^3.0.1"
   },
   "directories": {
     "test": "test"

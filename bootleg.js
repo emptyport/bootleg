@@ -1,10 +1,8 @@
 'use strict';
 
 let mgf = require('js-mgf');
-let fastaParser = require('fasta-js');
-let peptideCutter = require('peptide-cutter');
-let pepMod = require('peptide-modifier');
 let pepFrag = require('peptide-fragmenter');
+let mysql = require('sync-mysql');
 
 const calculateMass = (sequence, modifications) => {
   const residue_masses = {
@@ -41,12 +39,12 @@ const calculateMass = (sequence, modifications) => {
   }
 
   let mass = 18.010565;
-  for(var i=0; i<sequenceList.length; i++) {
+  for(var i=0, sequenceListLength=sequenceList.length; i<sequenceListLength; i++) {
     let residue = sequenceList[i];
     mass += residue_masses[residue];
   }
 
-  for (var i=0; i<modifications.length; i++) {
+  for (var i=0, modificationsLength=modifications.length; i<modificationsLength; i++) {
     let modMass = modifications[i].mass;
     mass += modMass;
   }
@@ -63,9 +61,16 @@ const sortByKey = (array, key) => {
   });
 }
 
+const sortByKeyReverse = (array, key) => {
+  return array.sort(function(a, b) {
+      var x = a[key]; var y = b[key];
+      return ((x > y) ? -1 : ((x < y) ? 1 : 0));
+  });
+}
+
 const parseSpectra = (data) => {
   let spectra = mgf.parse(data);
-  for(var i=0; i<spectra.length; i++) {
+  for(var i=0, spectraLength=spectra.length; i<spectraLength; i++) {
     let charge = parseFloat(spectra[i].charge);
     let pepmass = parseFloat(spectra[i].pepmass);
     let mass = charge * pepmass - charge;
@@ -73,7 +78,7 @@ const parseSpectra = (data) => {
     let intensitySum = spectra[i].intensity.reduce((total, num) => {
       return total + num;
     });
-    for(var j=0; j<spectra[i].intensity.length; j++) {
+    for(var j=0, spectraIntensityLength=spectra[i].intensity.length; j<spectraIntensityLength; j++) {
       spectra[i].intensity[j] = spectra[i].intensity[j] / intensitySum;
     }
   }
@@ -93,143 +98,54 @@ class Matches {
         bestScore: 0,
         fdr: 1,
         bestMatch: 0,
+        bestIsDecoy: false,
         matchedPSMs: []
       };
     }
   }
 
-  addMatch(index, modType, missedCleavages, fastaIndex, score) {
+  addMatch(index, currentPeptide, score, isDecoy) {
     let newMatch = {
-      modType: modType,
-      missedCleavages: missedCleavages,
-      fastaIndex: fastaIndex,
+      missedCleavages: currentPeptide.missedCleavages,
       score: score,
+      peptide: currentPeptide
     };
     let spectrumMatch = this.matches[index];
     if(score > spectrumMatch.bestScore) {
       this.matches[index].bestScore = score;
       this.matches[index].bestMatch = this.matches[index].matchedPSMs.length;
+      this.matches[index].bestIsDecoy = isDecoy;
     }
     this.matches[index].matchedPSMs.push(newMatch);
   }
 
 }
 
-class Database {
-  constructor(config) {
-    this.minimallyModified = {};
-    this.modified = {};
-    this.maxMissedCleavages = config.missedCleavages;
-    let missed = 0;
-    while (missed <= config.missedCleavages) {
-      this.minimallyModified[missed] = [];
-      this.modified[missed] = [];
-      missed++;
+const prepareMatches = (spectra, matches) => {
+  for(let i=0, matchesLength=matches.matches.length; i<matchesLength; i++) {
+    let match = matches.matches[i];
+    if(match.matchedPSMs.length === 0) {
+      matches.matches[i].spectrum = '';
+      matches.matches[i].accession = '';
+      matches.matches[i].sequence = '';
+      matches.matches[i].modifications = '';
+      matches.matches[i].bestScore = '';
+      continue;
     }
-  }
-
-  addPeptide(peptide) {
-    if(peptide.modifications.length === 0) {
-      this.minimallyModified[peptide.missedCleavages].push(peptide);
-    }
-    else {
-      let isMinimallyModified = true;
-      peptide.modifications.map((mod) => {
-        if(mod.type === "variable" && mod.name.toLowerCase() !== "oxidation") { isMinimallyModified = false; }
-      });
-      if(isMinimallyModified) {
-        this.minimallyModified[peptide.missedCleavages].push(peptide);
-      }
-      else {
-        this.modified[peptide.missedCleavages].push(peptide);
-      }
-    }
-  }
-
-  sortPeptides() {
-    let missed = 0;
-    while (missed <= this.maxMissedCleavages) {
-      this.minimallyModified[missed] = sortByKey(this.minimallyModified[missed], 'mass');
-      this.modified[missed] = sortByKey(this.modified[missed], 'mass');
-      missed++;
-    }
+    let modType = match.matchedPSMs[match.bestMatch].modType;
+    let missedCleavages = match.matchedPSMs[match.bestMatch].missedCleavages;
+    let peptide = match.matchedPSMs[match.bestMatch].peptide;
+    matches.matches[i].spectrum = spectra[i].title;
+    matches.matches[i].accession = peptide.accession;
+    matches.matches[i].sequence = peptide.sequence;
+    matches.matches[i].modifications = peptide.modifications;
   }
 }
 
-const processPeptides = (accession, sequence, config, database) => {
-  let cuttingOptions = {
-    'enzyme': config.enzyme,
-    'num_missed_cleavages': config.missedCleavages,
-    'min_length': config.minLength,
-    'max_length': config.maxLength
-  }
-  let cutter = new peptideCutter(cuttingOptions);
-
-  let cleavedPeptides = cutter.cleave(sequence);
-  for(var i=0; i<cleavedPeptides.length; i++) {
-    var pep = cleavedPeptides[i];
-    let modifications = pepMod.modify(pep.sequence, config.modifications, config.numVariableMods);
-    for(var j=0; j<modifications.length; j++) {
-      let mass = calculateMass(pep.sequence, modifications[j]);
-      if(mass === -1) { continue; }
-      if(mass < config.minMass || mass > config.maxMass) { continue; }
-      let dbEntry = {
-        accession: accession,
-        sequence: pep.sequence,
-        start: pep.start,
-        end: pep.end,
-        missedCleavages: pep.missed,
-        modifications: modifications[j],
-        mass: mass,
-        fragments: pepFrag.fragment(pep.sequence, config.ionTypes, config.fragmentCharge, modifications[j])
-      };
-      database.addPeptide(dbEntry);
-    }
-  }
-}
-
-const parseFasta = (data, config) => {
-  let fasta = new fastaParser(config.fastaOptions);
-  let sequenceDB = fasta.parse(data);
-  let l = sequenceDB.length;
-
-  // This database is going to be split into minimally
-  // modified peptides and modified peptides as well as
-  // by the number of missed cleavages. The idea is to 
-  // build in a cascading search to help with search speed
-  console.log('Creating database...');
-  let count = 0;
-  let numIntervalsTotal = 20;
-  let numIntervalsElapsed = 0;
-  let interval = parseInt(l/numIntervalsTotal);
-  let database = new Database(config);
-  sequenceDB.map((dbEntry) => {
-    if(count%interval===0) {
-      let progress = numIntervalsElapsed * (100/numIntervalsTotal);
-      process.stdout.write(progress+"% ");
-      numIntervalsElapsed++;
-    }
-    count++;
-    let entryAccession = dbEntry.accession;
-    let entrySequence = dbEntry.sequence;
-    let peptidesToAdd = processPeptides(entryAccession, entrySequence, config, database);
-    if(config.generateDecoy) {
-      let decoy_accession = dbEntry.accession + config.decoyTag;
-      let decoy_sequence = dbEntry.sequence.split("").reverse().join("");
-      let decoyPeptidesToAdd = processPeptides(decoy_accession, decoy_sequence, config, database);
-    }
-  });
-  console.log('\n');
-  sequenceDB = [];
-  console.log('Sorting database...');
-  database.sortPeptides();
-  return database;  
-
-}
 
 const matchFragments = (mz, fragments, config)=> {
   let matches = [];
-  for(var i=0; i<fragments.length; i++) {
+  for(var i=0, fragmentsLength=fragments.length; i<fragmentsLength; i++) {
     let closestMatch = closestIdx(fragments[i], mz);
     if(Math.abs(mz[closestMatch] - fragments[i]) < config.fragmentTol) {
       matches.push(closestMatch);
@@ -257,49 +173,93 @@ const closestIdx = (num, arr) => {
   return hi;
 }
 
-const runCascade = (fastaDB, spectra, config, matches) => {
-  let peptideList;
-  for(let i=0; i<=config.missedCleavages; i++) {
-    console.log('Running search against minimally modified peptides with '+i+' missed cleavages');
-    peptideList = fastaDB.minimallyModified[i];
-    runSearch(peptideList, spectra, config, matches, "minimallyModified");
-    console.log('Running search against modified peptides with '+i+' missed cleavages');
-    peptideList = fastaDB.modified[i];
-    runSearch(peptideList, spectra, config, matches, "modified");
+const calculateFDR = (matches, config) => {
+  let l = matches.matches.length;
+  let calculationArr = new Array(l);
+  for(let i=0; i<l; i++) {
+    calculationArr[i] = {
+      score: matches.matches[i].bestScore,
+      fdr: matches.matches[i].fdr,
+      isDecoy: matches.matches[i].bestIsDecoy,
+      idx: i
+    }
+  }
+  let sortedArr = sortByKey(calculationArr, 'score');
+  let fdrMask = sortedArr.map((entry) => {
+    return entry.isDecoy;
+  });
+
+  let numDecoys = fdrMask.reduce((total, num) => {
+    return total + num;
+  }, 0);
+  let currentFDR = numDecoys / l;
+
+  let idxCutoff = 0;
+  while(currentFDR > config.fdrCutoff) {
+    numDecoys -= fdrMask[idxCutoff];
+    l--;
+    currentFDR = numDecoys / l;
+    idxCutoff++;
+  }
+
+  for(let i=idxCutoff, sortedArrLength=sortedArr.length; i<sortedArrLength; i++) {
+    let idxToSet = sortedArr[i].idx;
+    matches.matches[idxToSet].fdr = 0;
+  }
+  console.log('Retaining '+l+' matches');
+}
+
+// https://medium.freecodecamp.org/how-to-factorialize-a-number-in-javascript-9263c89a4b38
+const factorialize = (num) => {
+  if (num < 0) 
+        return -1;
+  else if (num == 0) 
+      return 1;
+  else {
+      return (num * factorialize(num - 1));
   }
 }
 
-const runSearch = (peptideList, spectra, config, matches, dbType) => {
-  if(peptideList.length === 0) {
-    console.log("N/A");
-    return;
-  }
+const runSearch = (spectra, config, matches, connection) => {
+  console.log(`Searching ${spectra.length} spectra...`);
+  let count = 0;
+  let numIntervalsTotal = 20;
+  let numIntervalsElapsed = 0;
+  let interval = parseInt(spectra.length/numIntervalsTotal);
 
-  let startIdx = 0;
-  let endIdx = 0;
-  for(let i=0; i<spectra.length; i++) {
+  for(let i=0, spectraLength=spectra.length; i<spectraLength; i++) {
+    if(count%interval===0) {
+      let progress = numIntervalsElapsed * (100/numIntervalsTotal);
+      process.stdout.write(progress+"% ");
+      numIntervalsElapsed++;
+    }
+    count++;
+
     let spectrum = spectra[i];
-    if(spectrum.fdr < config.fdrCutoff) { continue; }
     let errorRange = config.precursorTol / 1000000 * spectrum.neutral_mass;
     let lowerBound = spectrum.neutral_mass - errorRange;
     let upperBound = spectrum.neutral_mass + errorRange;
 
-    while(peptideList[startIdx].mass < lowerBound && startIdx<peptideList.length) {
-      startIdx++;
-    }
-    while(peptideList[endIdx].mass <= upperBound && endIdx<peptideList.length) {
-      endIdx++;
-    }
+    let query = 
+      `SELECT * FROM ${config.table_name}
+      WHERE mass>=${lowerBound} AND mass<=${upperBound}
+      AND missed_cleavages<=${config.missedCleavages}`;
 
-    for(let j=startIdx; j<=endIdx; j++) {
+    let peptideList = connection.query(query);
+
+    for(let j=0; j<peptideList.length; j++) {
       let currentPeptide = peptideList[j];
+      currentPeptide.fragments = pepFrag.fragment(currentPeptide.sequence, ['b','y'], [1], currentPeptide.modifications);
+
       let matchedFragments = {};
       // This is ugly looking. Iterate over ion types and then charge states
       for(var ionType in currentPeptide.fragments) {
         if(currentPeptide.fragments.hasOwnProperty(ionType)) {
+
           matchedFragments[ionType] = {};
           for(var chargeState in currentPeptide.fragments[ionType]) {
             if(currentPeptide.fragments[ionType].hasOwnProperty(chargeState)) {
+
               let fragmentMatches = matchFragments(spectrum.mz, currentPeptide.fragments[ionType][chargeState], config);
               matchedFragments[ionType][chargeState] = fragmentMatches;
             }
@@ -313,26 +273,34 @@ const runSearch = (peptideList, spectra, config, matches, dbType) => {
       let score = 0;
       for(var ionType in matchedFragments) {
         if(matchedFragments.hasOwnProperty(ionType)) {
+
           for(var chargeState in matchedFragments[ionType]) {
             if(matchedFragments[ionType].hasOwnProperty(chargeState)) {
+
               let matchIdxArr = matchedFragments[ionType][chargeState];
               let numIons = matchIdxArr.length;
               score += numIons;
-              for(let k=0; k<matchIdxArr.length; k++) {
+              for(let k=0, matchIdxArrLength=matchIdxArr.length; k<matchIdxArrLength; k++) {
                 score += spectrum.intensity[k];
               }
             }
           }
         }
       }
-      matches.addMatch(i, dbType, currentPeptide.missedCleavages, j, score);
+      let isDecoy = false;
+      if(currentPeptide.accession.includes(config.decoyTag)) {
+        isDecoy = true;
+      }
+      if(score > 0) {
+        matches.addMatch(i, currentPeptide, score, isDecoy);
+      }
     }
   }
-
+  process.stdout.write("\n");
 
 }
 
-module.exports.search = (spectra_data, fasta_data, config) => {
+module.exports.search = (spectra_data, config) => {
 
   // Let's start off by parsing the spectra and then sorting everything
   let spectra = parseSpectra(spectra_data);
@@ -344,13 +312,20 @@ module.exports.search = (spectra_data, fasta_data, config) => {
   config.minMass = spectraMassArray[0].neutral_mass;
   config.maxMass = spectraMassArray[spectraLength - 1].neutral_mass;
 
-  // Now let's parse the fasta file
-  let fastaDB = parseFasta(fasta_data, config);
-  
   console.log('Matching peptides to spectra...');
   let matches = new Matches(spectraLength);
-  runCascade(fastaDB, spectra, config, matches);
-  
 
+  let connection = new mysql({
+    host     : config.server_address,
+    port     : config.server_port,
+    user     : config.server_username,
+    password : config.server_password,
+    database : config.db_name
+  });
+
+  runSearch(spectra, config, matches, connection);
+  calculateFDR(matches, config);
+  prepareMatches(spectra, matches);
+  return(matches);
 }
 

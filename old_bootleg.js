@@ -45,7 +45,7 @@ let cuttingOptions = {
 let fasta = new fastaParser(fastaOptions);
 let cutter = new peptideCutter(cuttingOptions);
 
-fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
+fs.readFile('chicken.mgf', 'utf-8', function(err, data) {
   if (err) throw err;
   console.log('Read in mgf file');
   console.log('Analyzing mgf file...');
@@ -76,7 +76,7 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
     spectraMassArray[i] = (sortedSpectra[i].neutral_mass);
   }
 
-  fs.readFile('bakers_yeast.fasta', 'utf-8', function(err, data){
+  fs.readFile('chicken.fasta', 'utf-8', function(err, data){
     if(err) throw err;
     console.log('Read in fasta file');
     console.log('Searching...');
@@ -135,8 +135,8 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
             return accumulator + val;
           });
 
-          //let score = (bTotal + yTotal) * factorialize(bMatches.length) * factorialize(yMatches.length);
-          let score = bMatches.length + yMatches.length + (bTotal + yTotal)/totalIntensity;
+          let score = (bTotal + yTotal) * factorialize(bMatches.length) * factorialize(yMatches.length);
+          //let score = bMatches.length + yMatches.length + (bTotal + yTotal)/totalIntensity;
 
           let spectrumMatch = {
             spectrum: s.title,
@@ -155,7 +155,7 @@ fs.readFile('test_spectra.mgf', 'utf-8', function(err, data) {
     process.stdout.write('\n');
 
     const csvWriter = createCsvWriter({
-      path: './results.csv',
+      path: './old_results.csv',
       header: [
           {id: 'spectrum', title: 'Spectrum title'},
           {id: 'accession', title: 'Accession'},
@@ -220,17 +220,17 @@ function processPeptides(accession, sequence, config) {
   let cleavedPeptides = cutter.cleave(sequence);
   for(var i=0; i<cleavedPeptides.length; i++) {
     var pep = cleavedPeptides[i];
-    let modifications = pepMod.modify(pep, config.modifications, 2);
+    let modifications = pepMod.modify(pep.sequence, config.modifications, 2);
     for(var j=0; j<modifications.length; j++) {
-      let mass = calculateMass(pep, modifications[j]);
+      let mass = calculateMass(pep.sequence, modifications[j]);
       if(mass === -1) { continue; }
       if(mass < config.minMass || mass > config.maxMass) { continue; }
       let dbEntry = {
         accession: accession,
-        sequence: pep,
+        sequence: pep.sequence,
         modifications: modifications[j],
         mass: mass,
-        fragments: pepFrag.fragment(pep, ['b','y'], [1], modifications[j])
+        fragments: pepFrag.fragment(pep.sequence, ['b','y'], [1], modifications[j])
       };
       peptidesToReturn.push(dbEntry);
     }

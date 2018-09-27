@@ -1,0 +1,19 @@
+{
+    "server_address": "localhost",
+    "server_port": "3306",
+    "server_username": "pepDB",
+    "server_password": "password",
+    "table_name": "chicken",
+    "db_name": "pepDB",
+
+    "minLength": 8,
+    "maxLength": 30,
+    "missedCleavages": 0,
+    "ionTypes": ["b", "y"],
+    "fragmentCharge": [1],
+    "numVariableMods": 2,
+    "decoyTag": "_REVERSED",
+    
+    "precursorTol": 20,
+    "fragmentTol": 0.5
+}

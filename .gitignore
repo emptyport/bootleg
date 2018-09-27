@@ -2,3 +2,7 @@ node_modules
 *.fasta
 *.mgf
 *.csv
+*.gnumeric
+*.tar.gz
+*.msp
+

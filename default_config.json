@@ -27,5 +27,6 @@
     "fragmentTol": 0.5,
     "generateDecoy": true,
     "decoyTag": "_REVERSED",
-    "fdrCutoff": 0.01
+    "fdrCutoff": 0.01,
+    "dbBatchSize": 2000
 }
